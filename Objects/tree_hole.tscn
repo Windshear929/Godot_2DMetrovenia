@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyg7evao2k8hc"]
+
+[ext_resource type="Script" uid="uid://crfvqbvkll8h2" path="res://Classes/teleport.gd" id="1_i8w3p"]
+[ext_resource type="Texture2D" uid="uid://bgtg3w6qeswdp" path="res://Artwork/Legacy-Fantasy - High Forest 2.0/Assets/Tree-Assets.png" id="2_a8r66"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dfpv"]
+size = Vector2(32, 48)
+
+[node name="TreeHole1" type="Area2D"]
+script = ExtResource("1_i8w3p")
+metadata/_custom_type_script = "uid://crfvqbvkll8h2"
+
+[node name="Tree-assets" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("2_a8r66")
+region_enabled = true
+region_rect = Rect2(64, 128, 32, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_2dfpv")

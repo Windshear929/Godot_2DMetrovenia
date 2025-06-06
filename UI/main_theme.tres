@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://davy6s5ji0jrj"]
+
+[ext_resource type="FontFile" uid="uid://bksb5v4yvd2ks" path="res://Artwork/UI/Fort/Silver.ttf" id="1_2nl5o"]
+[ext_resource type="Texture2D" uid="uid://dkiu4yuhqdn6a" path="res://Artwork/Legacy-Fantasy - High Forest 2.0/HUD/Base-01.png" id="1_h32ur"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h32ur"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7m7pu"]
+texture = ExtResource("1_h32ur")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(94, 14, 20, 20)
+
+[resource]
+default_font = ExtResource("1_2nl5o")
+Button/colors/font_outline_color = Color(0, 0, 0, 0.780392)
+Button/colors/font_pressed_color = Color(1, 1, 1, 0.564706)
+Button/constants/outline_size = 6
+Button/styles/disabled = SubResource("StyleBoxEmpty_h32ur")
+Button/styles/focus = SubResource("StyleBoxTexture_7m7pu")
+Button/styles/hover = SubResource("StyleBoxEmpty_h32ur")
+Button/styles/normal = SubResource("StyleBoxEmpty_h32ur")
+Button/styles/pressed = SubResource("StyleBoxEmpty_h32ur")

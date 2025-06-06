@@ -1,0 +1,99 @@
+[gd_scene load_steps=15 format=3 uid="uid://c7de0gp8b05pu"]
+
+[ext_resource type="Script" uid="uid://dfxjeh1wt5qb" path="res://Globals/game.gd" id="1_hv63o"]
+[ext_resource type="Script" uid="uid://dp0oddbjdu1ob" path="res://Classes/stats.gd" id="2_7rqii"]
+[ext_resource type="Script" uid="uid://cipqe1pvd7v1t" path="res://Classes/attribute.gd" id="3_kpgkj"]
+
+[sub_resource type="Resource" id="Resource_ox044"]
+script = ExtResource("3_kpgkj")
+base_value = 5
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[sub_resource type="Resource" id="Resource_f235b"]
+script = ExtResource("3_kpgkj")
+base_value = 5
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[sub_resource type="Resource" id="Resource_nnuyt"]
+script = ExtResource("3_kpgkj")
+base_value = 5
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[sub_resource type="Resource" id="Resource_vt647"]
+script = ExtResource("3_kpgkj")
+base_value = 5
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[sub_resource type="Resource" id="Resource_a75qt"]
+script = ExtResource("3_kpgkj")
+base_value = 50
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[sub_resource type="Resource" id="Resource_0aagl"]
+script = ExtResource("3_kpgkj")
+base_value = 0
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[sub_resource type="Resource" id="Resource_kpgkj"]
+script = ExtResource("3_kpgkj")
+base_value = 120
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[sub_resource type="Resource" id="Resource_3n5g3"]
+script = ExtResource("3_kpgkj")
+base_value = 0
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[sub_resource type="Resource" id="Resource_j27jc"]
+script = ExtResource("3_kpgkj")
+base_value = 100
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[sub_resource type="Resource" id="Resource_c673k"]
+script = ExtResource("3_kpgkj")
+base_value = 8
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[sub_resource type="Resource" id="Resource_ejell"]
+script = ExtResource("3_kpgkj")
+base_value = 4
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[node name="Game" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_hv63o")
+
+[node name="PlayerStats" type="Node" parent="."]
+script = ExtResource("2_7rqii")
+strength = SubResource("Resource_ox044")
+agility = SubResource("Resource_f235b")
+intelligence = SubResource("Resource_nnuyt")
+vitality = SubResource("Resource_vt647")
+damage = SubResource("Resource_a75qt")
+crit_chance = SubResource("Resource_0aagl")
+max_health = SubResource("Resource_kpgkj")
+evasion = SubResource("Resource_3n5g3")
+max_energy = SubResource("Resource_j27jc")
+energy_regenerate = SubResource("Resource_c673k")
+attack_energy_regenerate = SubResource("Resource_ejell")
+metadata/_custom_type_script = "uid://dp0oddbjdu1ob"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

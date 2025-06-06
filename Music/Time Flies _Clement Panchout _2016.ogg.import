@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://wjeu5ndo6xt5"
+path="res://.godot/imported/Time Flies _Clement Panchout _2016.ogg-86be19238acf3d11eb8d5f9e8396cfa0.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Time Flies _Clement Panchout _2016.ogg"
+dest_files=["res://.godot/imported/Time Flies _Clement Panchout _2016.ogg-86be19238acf3d11eb8d5f9e8396cfa0.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c4f5otut048jj"
+path="res://.godot/imported/Clement Panchout _ Violence.ogg-23fe973e6cf2db94415f44ea1142b0f6.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Clement Panchout _ Violence.ogg"
+dest_files=["res://.godot/imported/Clement Panchout _ Violence.ogg-23fe973e6cf2db94415f44ea1142b0f6.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
