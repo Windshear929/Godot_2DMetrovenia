@@ -6,10 +6,15 @@ signal energy_change
 signal target_dodge
 
 @export_category("主要属性")
-@export var strength: Attribute = Attribute.new() ## 没点属性值直接影响角色的攻击力，0.5倍影响角色的暴击伤害
+@export var strength: Attribute = Attribute.new() ## 每点属性值直接影响角色的攻击力，0.5倍影响角色的暴击伤害
+## 敏捷属性分阶段影响回避率
+## 属性值(1-10): evasion = 0.5 * agility;
+## 属性值(11-30): evasion = 4 + (agility - 10) * 1.25;
+## 属性值(>31): evasion = 30 + (agility -30) * 0.2;
 @export var agility: Attribute = Attribute.new()
-@export var intelligence: Attribute = Attribute.new()
-@export var vitality: Attribute = Attribute.new()
+@export var intelligence: Attribute = Attribute.new() ## 每点属性直接影响魔法伤害
+@export var vitality: Attribute = Attribute.new() ## 每点属性增加5点最大生命值上限
+@export var luck: Attribute = Attribute.new() ## 暴击率 = 50% * (1- e^(-k * luck):luck属性影响暴击率上限不会超过50%
 
 @export_category("进攻属性")
 @export var damage: Attribute = Attribute.new()
@@ -96,16 +101,29 @@ func do_magic_damage(_target_stats: Stats) -> void:
 
 
 func target_can_avoid_attack(_target_stats: Stats) -> bool:
-	var target_total_evasion = _target_stats.evasion.get_value() + _target_stats.agility.get_value()
+	var target_base_evasion = _target_stats.evasion.get_value()
+	var agility = _target_stats.agility.get_value()
+	var agility_evasion: float
 	
-	target_total_evasion = clamp(target_total_evasion, 0, 80)
+	if agility <= 10:
+		agility_evasion = 0.5 * agility
+	elif agility <= 30:
+		agility_evasion = 4 + (agility -10) * 1.25
+	else:
+		agility_evasion = 30 + (agility - 30) * 0.2
 	
-	if randf_range(0.0, 100.0) < target_total_evasion:
+	var total_evasion = target_base_evasion + agility_evasion
+	total_evasion = clamp(total_evasion, 0.0, 80.0)
+	print("当前回避率：", total_evasion, "%")
+	
+	if randf_range(0.0, 100.0) < total_evasion:
 		return true
 	return false
 
 func can_crit() -> bool:
-	var total_chance = min(crit_chance.get_value() + agility.get_value(), 100.0)
+	var base_crit_chance = crit_chance.get_value()
+	var luck_crit_chance = roundi(0.5 * (1 - exp(-0.03 * luck.get_value())) * 100)
+	var total_chance = min(base_crit_chance + luck_crit_chance, 100.0)
 	print("暴击率： ", total_chance, "%")
 	return randf_range(0.0, 100.0) <= total_chance
 
@@ -116,12 +134,12 @@ func calculate_critical_damage(_damage: int) -> int:
 
 func check_target_armor(_target_stats: Stats, _damage: int) -> int:
 	_damage -= _target_stats.armor.get_value()
-	_damage = clamp(_damage, 1, 9999)
+	_damage = clamp(_damage, 1, 9999) # 防御抵消攻击最低也会造成1点伤害，且伤害的上限不会超过9999
 	return _damage
 
 func check_target_resist(_target_stats: Stats, magic_damge: int) -> int:
 	magic_damge -= _target_stats.magic_resist.get_value() + _target_stats.intelligence.get_value()
-	magic_damge = clamp(magic_damge, 1, 9999)
+	magic_damge = clamp(magic_damge, 1, 9999) # 魔防抵消魔攻最低也会造成1点伤害，且伤害的上限不会超过9999
 	return magic_damge
 
 func to_dict() -> Dictionary:
@@ -130,6 +148,7 @@ func to_dict() -> Dictionary:
 		"agility": agility.to_dict(),
 		"intelligence": intelligence.to_dict(),
 		"vitality": vitality.to_dict(),
+		"luck": luck.to_dict(),
 		
 		"damage": damage.to_dict(),
 		"crit_chance": crit_chance.to_dict(),
@@ -152,6 +171,7 @@ func from_dict(dict: Dictionary) -> void:
 	agility.from_dict(dict.get("agility", []))
 	intelligence.from_dict(dict.get("intelligence", []))
 	vitality.from_dict(dict.get("vitality", []))
+	luck.from_dict(dict.get("luck", []))
 	
 	damage.from_dict(dict.get("damage", []))
 	crit_chance.from_dict(dict.get("crit_chance", []))
