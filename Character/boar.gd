@@ -75,11 +75,11 @@ func get_next_state(state: State) -> int:
 
 
 func transition_state(from: State, to: State) -> void:
-	print("[%s] %s => %s" % [
-		Engine.get_physics_frames(),
-		State.keys()[from] if from != -1 else "<START>",
-		State.keys()[to]
-	])
+	#print("[%s] %s => %s" % [
+		#Engine.get_physics_frames(),
+		#State.keys()[from] if from != -1 else "<START>",
+		#State.keys()[to]
+	#])
 	
 	match to:
 		State.IDLE:
@@ -133,3 +133,9 @@ func _on_hurtbox_hurt(hitbox: Hitbox) -> void: # 该方法为节点连接hurtbox
 func hide_health_bar() -> void:
 	var tween = create_tween()
 	tween.tween_property(status_panel, "modulate:a", 0.0, 0.2)
+
+func die():
+	var tween = create_tween()
+	tween.tween_property(graphics, "modulate:a", 0.0, 0.2)
+	await tween.finished
+	super()

@@ -5,6 +5,14 @@ signal health_change
 signal energy_change
 signal target_dodge
 
+const ELEMENTAL_PROBABILITY = 1 / 3
+
+@export var ignite_fx: AnimatedSprite2D
+@export var freeze_fx: AnimatedSprite2D
+@export var shock_fx: AnimatedSprite2D
+@export var element_fx_timer: Timer
+@export var animation_player: AnimationPlayer
+
 @export_category("主要属性")
 @export var strength: Attribute = Attribute.new() ## 每点属性值直接影响角色的攻击力，0.5倍影响角色的暴击伤害
 ## 敏捷属性分阶段影响回避率
@@ -58,16 +66,28 @@ var total_damage: int = 0
 var total_m_damage: int = 0
 var is_dodge_attack: bool = false
 var is_critical_attack: bool = false
-var is_magic_damage: bool = false
+var is_element_affect: bool = false
+var ignite_damage_timer: Timer
+var is_freeze: bool = false
+var is_shock: bool = false
 
 func _init() -> void:
 	crit_power.set_default_value(150)
 
 func _ready() -> void:
 	print("%s初始生命为： %s" % [owner.name, health])
+	
+	## 点燃状态自动扣血
+	ignite_damage_timer = Timer.new()
+	add_child(ignite_damage_timer)
+	ignite_damage_timer.wait_time = 0.3
+	ignite_damage_timer.timeout.connect(_on_ignited_damage)
 
 func _process(delta: float) -> void:
 	energy += energy_regenerate.get_value() * delta
+
+func _on_ignited_damage() -> void:
+	health -= roundi(get_max_health() * 0.01)
 
 func get_max_health() -> int:
 	return max_health.get_value() + vitality.get_value() * 5
@@ -93,24 +113,85 @@ func do_magic_damage(_target_stats: Stats) -> void:
 	var _ice_damage = ice_damage.get_value()
 	var _thunder_damage = thunder_damage.get_value()
 	
-	is_magic_damage = true
+	if _target_stats.health <= 0:
+		_target_stats.is_element_affect = false
+	
+	if _fire_damage == 0 and _ice_damage == 0 and _thunder_damage == 0:
+		return
+	# 设置元素伤害判断条件
+	var can_ignite_damage: bool = _fire_damage > _ice_damage and _fire_damage > _thunder_damage
+	var can_freeze_damage: bool = _ice_damage > _fire_damage and _ice_damage > _thunder_damage
+	var can_shock_damage: bool = _thunder_damage > _fire_damage and _thunder_damage > _ice_damage
+	
+	if can_ignite_damage:
+		print("Ignited! Fire Damage: ", _fire_damage)
+	if can_freeze_damage:
+		print("Freeze! Ice Damage: ", _ice_damage)
+	if can_shock_damage:
+		print("Shock! Thunder Damage: ", _thunder_damage)
+	
+	while (not can_ignite_damage and not can_freeze_damage and not can_shock_damage):
+		if (randf() < ELEMENTAL_PROBABILITY and _fire_damage > 0):
+			can_ignite_damage = true
+			_ice_damage = 0
+			_thunder_damage = 0
+			break
+		if (randf() < ELEMENTAL_PROBABILITY and _ice_damage > 0):
+			can_freeze_damage = true
+			_fire_damage = 0
+			_thunder_damage = 0
+			break
+		if (randf() < ELEMENTAL_PROBABILITY and _thunder_damage > 0):
+			can_shock_damage = true
+			_fire_damage = 0
+			_ice_damage = 0
+			break
+	element_effect(_target_stats, can_ignite_damage, can_freeze_damage, can_shock_damage)
 	
 	total_m_damage = _fire_damage + _ice_damage + _thunder_damage + intelligence.get_value()
 	
 	total_m_damage = check_target_resist(_target_stats, total_m_damage)
 
+func element_effect(target: Stats, can_ignite: bool, can_freeze: bool, can_shock: bool) -> void:
+	# 这里要用一个值去确认角色的状态是否已经是在异常状态中，在状态中则中断函数
+	if target.is_element_affect:
+		return
+	
+	target.is_element_affect = true
+	if can_ignite:
+		target.ignite_damage_timer.start()
+		show_effects(target, target.ignite_fx, "ignite", Color.ORANGE)
+	if can_freeze:
+		show_effects(target, target.freeze_fx, "freeze", Color.DODGER_BLUE)
+	if can_shock:
+		show_effects(target, target.shock_fx, "shock", Color.GOLD)
+
+func show_effects(target: Stats, anim: AnimatedSprite2D, anim_name: String, color: Color) -> void:
+	var node: = target.get_parent().find_child("Graphics") as Node2D
+	
+	anim.visible = true
+	anim.play(anim_name)
+	node.modulate = color
+	target.element_fx_timer.start()
+	await anim.animation_finished
+	anim.visible = false
+	await target.element_fx_timer.timeout
+	node.modulate = Color.WHITE
+	target.ignite_damage_timer.stop()
+	target.is_element_affect = false
+
 
 func target_can_avoid_attack(_target_stats: Stats) -> bool:
 	var target_base_evasion = _target_stats.evasion.get_value()
-	var agility = _target_stats.agility.get_value()
+	var agility_v = _target_stats.agility.get_value()
 	var agility_evasion: float
 	
-	if agility <= 10:
-		agility_evasion = 0.5 * agility
-	elif agility <= 30:
-		agility_evasion = 4 + (agility -10) * 1.25
+	if agility_v <= 10:
+		agility_evasion = 0.5 * agility_v
+	elif agility_v <= 30:
+		agility_evasion = 4 + (agility_v -10) * 1.25
 	else:
-		agility_evasion = 30 + (agility - 30) * 0.2
+		agility_evasion = 30 + (agility_v - 30) * 0.2
 	
 	var total_evasion = target_base_evasion + agility_evasion
 	total_evasion = clamp(total_evasion, 0.0, 80.0)

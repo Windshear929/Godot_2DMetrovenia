@@ -101,10 +101,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func tick_physics(state: State, delta: float) -> void: # 在状态中持续做什么
 	interactive_icon.visible = not interactable_object.is_empty() # 可交互UI可见性和是否存在可交互对象关联
-	#if pending_damage == null:
-		#print("pending_damage is null!")
-	#else:
-		#print(pending_damage.amount)
 	
 	if invincible_timer.time_left > 0:
 		graphics.modulate.a = sin(Time.get_ticks_msec() / 35.0) * 0.5 + 0.5

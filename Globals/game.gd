@@ -46,6 +46,7 @@ func change_scene(path: String, params := {}) -> void:
 		if "entry_point" in params:
 			for node in tree.get_nodes_in_group("entry_points"):
 				if node.name == params.entry_point:
+					await tree.process_frame
 					tree.current_scene.update_player(node.global_position, node.direction)
 					break
 		

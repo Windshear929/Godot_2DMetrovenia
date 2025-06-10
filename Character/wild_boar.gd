@@ -172,3 +172,8 @@ func _on_hurtbox_hurt(hitbox: Hitbox) -> void:
 		if pending_damage and pending_damage.amount > 0:
 			boss_hurt_effect()
 			SoundManager.play_sfx("BodyHurtSFX")
+
+func die():
+	boss_dead.emit()
+	
+	super()

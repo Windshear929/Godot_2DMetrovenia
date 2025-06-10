@@ -752,4 +752,16 @@ max_distance = 500.0
 attenuation = 0.68302
 bus = &"SFX"
 
+[node name="IgniteEffects" parent="." index="8"]
+position = Vector2(0, -19)
+scale = Vector2(1.2, 1.2)
+frame = 8
+frame_progress = 1.0
+
+[node name="FreezeEffects" parent="." index="9"]
+position = Vector2(0, -16)
+scale = Vector2(0.5, 0.5)
+frame = 6
+frame_progress = 1.0
+
 [connection signal="hurt" from="Graphics/Hurtbox" to="." method="_on_hurtbox_hurt"]

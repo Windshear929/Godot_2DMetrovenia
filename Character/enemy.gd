@@ -43,12 +43,17 @@ func move(speed: float, delta: float) -> void:
 
 func on_take_damage(attacker_stats: Stats, attacker_hitbox: Hitbox) -> void:
 	attacker_stats.do_damage(stats)
-	if attacker_stats.total_damage > 0:
+	attacker_stats.do_magic_damage(stats)
+	if attacker_stats.total_damage > 0 or attacker_stats.total_m_damage > 0:
 		pending_damage = Damage.new()
-		pending_damage.amount = attacker_stats.total_damage
+		pending_damage.amount = attacker_stats.total_damage + attacker_stats.total_m_damage
 		pending_damage.source = attacker_hitbox.owner
-		show_battle_info(attacker_stats.total_damage, global_position, attacker_stats)
+		if attacker_stats.total_damage > 0 and attacker_stats.total_m_damage <= 0:
+			show_battle_info(attacker_stats.total_damage, global_position, attacker_stats)
+		elif attacker_stats.total_damage > 0 and attacker_stats.total_m_damage > 0:
+			show_battle_info(attacker_stats.total_damage + attacker_stats.total_m_damage, global_position, attacker_stats)
 		attacker_stats.total_damage = 0
+		attacker_stats.total_m_damage = 0
 		stats.health -= pending_damage.amount
 		print("%s受到了%s的伤害" % [stats.owner.name, pending_damage.amount])
 		
@@ -88,5 +93,5 @@ func show_battle_info(value: int, pos: Vector2, _attacker_stats: Stats):
 
 
 func die():
-	boss_dead.emit()
+	stats.is_element_affect = false
 	queue_free()

@@ -1,10 +1,185 @@
-[gd_scene load_steps=6 format=3 uid="uid://0o74rhlcl0mw"]
+[gd_scene load_steps=34 format=3 uid="uid://0o74rhlcl0mw"]
 
 [ext_resource type="Script" uid="uid://b1qwos7xqq5va" path="res://Character/enemy.gd" id="1_1ptw2"]
 [ext_resource type="Script" uid="uid://xduhpqelwxau" path="res://Classes/statemachine.gd" id="1_4nc8h"]
 [ext_resource type="Script" uid="uid://bdhe2eo14p346" path="res://Classes/hitbox.gd" id="2_hema6"]
 [ext_resource type="Script" uid="uid://dwhr0wveplp3w" path="res://Classes/hurtbox.gd" id="3_1whr7"]
 [ext_resource type="Script" uid="uid://dp0oddbjdu1ob" path="res://Classes/stats.gd" id="5_4cfbj"]
+[ext_resource type="Texture2D" uid="uid://c74k1yeb8w547" path="res://Artwork/FX/Burst of ice.png" id="6_kgw7e"]
+[ext_resource type="Texture2D" uid="uid://c3e02de3rg0ry" path="res://Artwork/FX/burning_end_1.png" id="7_gac0p"]
+[ext_resource type="Texture2D" uid="uid://d11c3yae6q52p" path="res://Artwork/FX/burning_start_1.png" id="9_jsnnp"]
+[ext_resource type="Texture2D" uid="uid://b6132av2bgah1" path="res://Artwork/FX/Eletric A-Sheet.png" id="10_y7xjm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xiu6"]
+atlas = ExtResource("9_jsnnp")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1pns"]
+atlas = ExtResource("9_jsnnp")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t83ae"]
+atlas = ExtResource("9_jsnnp")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8300"]
+atlas = ExtResource("9_jsnnp")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7xjm"]
+atlas = ExtResource("7_gac0p")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jtjy"]
+atlas = ExtResource("7_gac0p")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ru6d"]
+atlas = ExtResource("7_gac0p")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd30h"]
+atlas = ExtResource("7_gac0p")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qirpv"]
+atlas = ExtResource("7_gac0p")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8fitc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xiu6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1pns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t83ae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8300")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7xjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jtjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ru6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd30h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qirpv")
+}],
+"loop": false,
+"name": &"ignite",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gac0p"]
+atlas = ExtResource("6_kgw7e")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2qy7"]
+atlas = ExtResource("6_kgw7e")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsnnp"]
+atlas = ExtResource("6_kgw7e")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdbjd"]
+atlas = ExtResource("6_kgw7e")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shar4"]
+atlas = ExtResource("6_kgw7e")
+region = Rect2(0, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puc1x"]
+atlas = ExtResource("6_kgw7e")
+region = Rect2(0, 640, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_043ed"]
+atlas = ExtResource("6_kgw7e")
+region = Rect2(0, 768, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l5dri"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gac0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2qy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsnnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdbjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shar4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puc1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_043ed")
+}],
+"loop": false,
+"name": &"freeze",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pu5vd"]
+atlas = ExtResource("10_y7xjm")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgmns"]
+atlas = ExtResource("10_y7xjm")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xijp8"]
+atlas = ExtResource("10_y7xjm")
+region = Rect2(96, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug28o"]
+atlas = ExtResource("10_y7xjm")
+region = Rect2(0, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tulx0"]
+atlas = ExtResource("10_y7xjm")
+region = Rect2(192, 192, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4nnom"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pu5vd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgmns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xijp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ug28o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tulx0")
+}],
+"loop": false,
+"name": &"shock",
+"speed": 12.0
+}]
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -41,6 +216,36 @@ root_node = NodePath("../CollisionShape2D")
 script = ExtResource("1_4nc8h")
 metadata/_custom_type_script = "uid://xduhpqelwxau"
 
-[node name="Stats" type="Node" parent="."]
+[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("ignite_fx", "freeze_fx", "shock_fx", "element_fx_timer", "animation_player")]
 script = ExtResource("5_4cfbj")
+ignite_fx = NodePath("../IgniteEffects")
+freeze_fx = NodePath("../FreezeEffects")
+shock_fx = NodePath("../ShockEffects")
+element_fx_timer = NodePath("../ElementTimer")
+animation_player = NodePath("../AnimationPlayer")
 metadata/_custom_type_script = "uid://dp0oddbjdu1ob"
+
+[node name="IgniteEffects" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_8fitc")
+animation = &"ignite"
+
+[node name="FreezeEffects" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -40)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_l5dri")
+animation = &"freeze"
+
+[node name="ShockEffects" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -40)
+sprite_frames = SubResource("SpriteFrames_4nnom")
+animation = &"shock"
+frame = 4
+frame_progress = 1.0
+
+[node name="ElementTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
