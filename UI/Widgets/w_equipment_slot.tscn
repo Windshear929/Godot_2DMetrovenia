@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://csrh36k5gjj8r"]
 
-[ext_resource type="PackedScene" uid="uid://cl3hm14ur6531" path="res://UI/w_item_slot.tscn" id="1_0xh7b"]
+[ext_resource type="PackedScene" uid="uid://cl3hm14ur6531" path="res://UI/Widgets/w_item_slot.tscn" id="1_0xh7b"]
 [ext_resource type="Shader" uid="uid://frrptjq5d0ic" path="res://Artwork/Materials/w_equipment_slot.gdshader" id="2_jk1e7"]
-[ext_resource type="Script" uid="uid://c4lrhthe7rqwm" path="res://UI/w_equipment_slot.gd" id="2_xijyj"]
+[ext_resource type="Script" uid="uid://c4lrhthe7rqwm" path="res://UI/Widgets/w_equipment_slot.gd" id="2_xijyj"]
 [ext_resource type="Texture2D" uid="uid://bxfq04myy8hgp" path="res://Artwork/Icon/Glove.png" id="3_jk1e7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_82mn0"]

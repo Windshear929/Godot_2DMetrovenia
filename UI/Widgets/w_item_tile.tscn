@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://fpv2cs286b0c"]
 
-[ext_resource type="Script" uid="uid://d2jbf5m7tfefa" path="res://UI/w_item_tile.gd" id="1_dkcqj"]
+[ext_resource type="Script" uid="uid://d2jbf5m7tfefa" path="res://UI/Widgets/w_item_tile.gd" id="1_dkcqj"]
 [ext_resource type="Texture2D" uid="uid://dkwwrca5juyou" path="res://Artwork/Icon/#2 - Transparent Icons & Drop Shadow.png" id="1_vjgxa"]
 [ext_resource type="FontFile" uid="uid://bksb5v4yvd2ks" path="res://Artwork/UI/Fort/Silver.ttf" id="2_dkcqj"]
 

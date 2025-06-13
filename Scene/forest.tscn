@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://c1hxa1akkatho"]
+[gd_scene load_steps=12 format=4 uid="uid://c1hxa1akkatho"]
 
 [ext_resource type="Texture2D" uid="uid://bgtg3w6qeswdp" path="res://Artwork/Legacy-Fantasy - High Forest 2.0/Assets/Tree-Assets.png" id="1_b2hj7"]
 [ext_resource type="Script" uid="uid://ds60s3gvtfb85" path="res://Scene/forest.gd" id="1_o2q3j"]
@@ -11,8 +11,6 @@
 [ext_resource type="Script" uid="uid://bfqy5cmbego0l" path="res://Classes/entrypoint.gd" id="5_p1i8u"]
 [ext_resource type="PackedScene" uid="uid://c0n2jas10c6jv" path="res://Character/boar.tscn" id="7_bawo1"]
 [ext_resource type="PackedScene" uid="uid://bbsl7ghac8ty1" path="res://Objects/save_stone.tscn" id="11_2dvii"]
-[ext_resource type="PackedScene" uid="uid://bdiop1dsvjst6" path="res://UI/ui_layer.tscn" id="12_u6jjf"]
-[ext_resource type="PackedScene" uid="uid://dl7d5uf4d5pua" path="res://UI/w_inventory.tscn" id="13_3tkwh"]
 
 [node name="Forest" type="Node2D" node_paths=PackedStringArray("geometry")]
 script = ExtResource("1_o2q3j")
@@ -325,10 +323,3 @@ max_speed = 150.0
 [node name="Boar2" parent="." instance=ExtResource("7_bawo1")]
 position = Vector2(400, 192)
 max_speed = 150.0
-
-[node name="UILayer" parent="." instance=ExtResource("12_u6jjf")]
-
-[node name="W_Inventory" parent="UILayer" instance=ExtResource("13_3tkwh")]
-unique_name_in_owner = true
-
-[editable path="UILayer"]

@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://dl7d5uf4d5pua"]
 
-[ext_resource type="Script" uid="uid://6rkra3iqgv1j" path="res://UI/w_inventory.gd" id="1_xq4g6"]
+[ext_resource type="Script" uid="uid://6rkra3iqgv1j" path="res://UI/Widgets/w_inventory.gd" id="1_xq4g6"]
 [ext_resource type="Texture2D" uid="uid://dkiu4yuhqdn6a" path="res://Artwork/UI/HUD/Base-01.png" id="2_56asy"]
 [ext_resource type="FontFile" uid="uid://bksb5v4yvd2ks" path="res://Artwork/UI/Fort/Silver.ttf" id="3_fuvcs"]
 [ext_resource type="Texture2D" uid="uid://nujkphxgcw33" path="res://Artwork/Icon/BG 7.png" id="4_fuvcs"]
 [ext_resource type="Texture2D" uid="uid://chbinle58lqdw" path="res://Artwork/UI/HUD/GUI.png" id="5_mmr7w"]
-[ext_resource type="PackedScene" uid="uid://cl3hm14ur6531" path="res://UI/w_item_slot.tscn" id="6_mwbo0"]
-[ext_resource type="PackedScene" uid="uid://csrh36k5gjj8r" path="res://UI/w_equipment_slot.tscn" id="6_qxd2e"]
+[ext_resource type="PackedScene" uid="uid://cl3hm14ur6531" path="res://UI/Widgets/w_item_slot.tscn" id="6_mwbo0"]
+[ext_resource type="PackedScene" uid="uid://csrh36k5gjj8r" path="res://UI/Widgets/w_equipment_slot.tscn" id="6_qxd2e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_56asy"]
 atlas = ExtResource("4_fuvcs")

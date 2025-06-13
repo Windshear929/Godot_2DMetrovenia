@@ -1,0 +1,99 @@
+[gd_scene load_steps=4 format=3 uid="uid://xg8a10pke2xr"]
+
+[ext_resource type="Script" uid="uid://bhdor81e48lt0" path="res://UI/Widgets/w_item_tip.gd" id="1_7uwdh"]
+[ext_resource type="Texture2D" uid="uid://dkiu4yuhqdn6a" path="res://Artwork/UI/HUD/Base-01.png" id="1_vxbls"]
+[ext_resource type="FontFile" uid="uid://bksb5v4yvd2ks" path="res://Artwork/UI/Fort/Silver.ttf" id="2_j02sd"]
+
+[node name="W_ItemTip" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_7uwdh")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_vxbls")
+region_rect = Rect2(243, 203, 58, 26)
+patch_margin_left = 8
+patch_margin_top = 4
+patch_margin_right = 6
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="V" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="W_Name_Set" type="MarginContainer" parent="MarginContainer/V"]
+layout_mode = 2
+
+[node name="ItemName" type="Label" parent="MarginContainer/V/W_Name_Set"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_j02sd")
+theme_override_font_sizes/font_size = 9
+text = "道具名称最多八字"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/V"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="W_Des_Set" type="MarginContainer" parent="MarginContainer/V"]
+layout_mode = 2
+
+[node name="V" type="VBoxContainer" parent="MarginContainer/V/W_Des_Set"]
+layout_mode = 2
+
+[node name="DescriptionTitle" type="Label" parent="MarginContainer/V/W_Des_Set/V"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_j02sd")
+theme_override_font_sizes/font_size = 7
+text = "道具简介："
+
+[node name="Label_Des" type="Label" parent="MarginContainer/V/W_Des_Set/V"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 60)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_j02sd")
+theme_override_font_sizes/font_size = 9
+text = "道具简介一大堆文字一大堆文字一大堆文字一大堆文字一大堆文字一大堆文字一大堆文字"
+autowrap_mode = 1
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/V"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="W_Attribute_Set" type="MarginContainer" parent="MarginContainer/V"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="V" type="VBoxContainer" parent="MarginContainer/V/W_Attribute_Set"]
+layout_mode = 2
+
+[node name="AttributeTitle" type="Label" parent="MarginContainer/V/W_Attribute_Set/V"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_j02sd")
+theme_override_font_sizes/font_size = 7
+text = "属性："
+
+[node name="Label_Attribute" type="Label" parent="MarginContainer/V/W_Attribute_Set/V"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_j02sd")
+theme_override_font_sizes/font_size = 9
+text = "力量"

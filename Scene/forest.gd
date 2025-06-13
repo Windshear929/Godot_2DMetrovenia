@@ -7,7 +7,7 @@ extends Node2D
 
 @onready var camera_2d: Camera2D = $Player/Camera2D
 @onready var player: Player = $Player
-@onready var w_inventory: MarginContainer = %W_Inventory
+
 
 var boss_was_dead: float = false
 
@@ -15,6 +15,8 @@ signal holding_camera
 
 func _ready() -> void:
 	_player_get_effects()
+	Game.w_inventory.c_inventory = player.get_node("C_Inventory")
+	Game.w_inventory.initialize()
 	var used := geometry.get_used_rect().grow(-1) # 获取关卡矩形尺寸中非空的图块左上和右下的坐标
 	var tile_size := geometry.tile_set.tile_size # 获取瓦片地图的图块单位尺寸
 	
@@ -28,7 +30,7 @@ func _ready() -> void:
 	if bgm:
 		SoundManager.play_bgm(bgm)
 	
-	w_inventory.c_inventory = player.get_node("C_Inventory")
+	
 
 func _player_get_effects() -> void:
 	Game.player_stats.ignite_fx = player.find_child("IgniteEffects", true, false)
