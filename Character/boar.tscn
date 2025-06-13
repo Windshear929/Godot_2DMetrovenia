@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c0n2jas10c6jv"]
+[gd_scene load_steps=26 format=3 uid="uid://c0n2jas10c6jv"]
 
 [ext_resource type="PackedScene" uid="uid://0o74rhlcl0mw" path="res://Character/enemy.tscn" id="1_4h46p"]
 [ext_resource type="Texture2D" uid="uid://dkbfrad1pqokd" path="res://Artwork/Legacy-Fantasy - High Forest 2.0/Mob/Boar/Idle/Idle-Sheet.png" id="2_op1cm"]
@@ -512,9 +512,9 @@ base_value = 10
 modifiers = []
 metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
-[sub_resource type="Resource" id="Resource_cf6xr"]
+[sub_resource type="Resource" id="Resource_oprij"]
 script = ExtResource("7_5kmpa")
-base_value = 250
+base_value = 0
 modifiers = []
 metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
@@ -524,9 +524,21 @@ base_value = 0
 modifiers = []
 metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
-[sub_resource type="Resource" id="Resource_oprij"]
+[sub_resource type="Resource" id="Resource_5fkfh"]
 script = ExtResource("7_5kmpa")
-base_value = 0
+base_value = 10
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[sub_resource type="Resource" id="Resource_qa13g"]
+script = ExtResource("7_5kmpa")
+base_value = 5
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[sub_resource type="Resource" id="Resource_cf6xr"]
+script = ExtResource("7_5kmpa")
+base_value = 250
 modifiers = []
 metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
@@ -578,10 +590,12 @@ wait_time = 2.5
 one_shot = true
 
 [node name="Stats" parent="." index="5"]
-damage = SubResource("Resource_5kmpa")
+strength = SubResource("Resource_5kmpa")
+agility = SubResource("Resource_oprij")
+intelligence = SubResource("Resource_7jd40")
+vitality = SubResource("Resource_5fkfh")
+luck = SubResource("Resource_qa13g")
 max_health = SubResource("Resource_cf6xr")
-armor = SubResource("Resource_7jd40")
-evasion = SubResource("Resource_oprij")
 
 [node name="StatusPanel" parent="." index="6" node_paths=PackedStringArray("stats") instance=ExtResource("7_0lykh")]
 anchors_preset = 15

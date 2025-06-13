@@ -1,0 +1,338 @@
+[gd_scene load_steps=10 format=3 uid="uid://dl7d5uf4d5pua"]
+
+[ext_resource type="Script" uid="uid://6rkra3iqgv1j" path="res://UI/w_inventory.gd" id="1_xq4g6"]
+[ext_resource type="Texture2D" uid="uid://dkiu4yuhqdn6a" path="res://Artwork/UI/HUD/Base-01.png" id="2_56asy"]
+[ext_resource type="FontFile" uid="uid://bksb5v4yvd2ks" path="res://Artwork/UI/Fort/Silver.ttf" id="3_fuvcs"]
+[ext_resource type="Texture2D" uid="uid://nujkphxgcw33" path="res://Artwork/Icon/BG 7.png" id="4_fuvcs"]
+[ext_resource type="Texture2D" uid="uid://chbinle58lqdw" path="res://Artwork/UI/HUD/GUI.png" id="5_mmr7w"]
+[ext_resource type="PackedScene" uid="uid://cl3hm14ur6531" path="res://UI/w_item_slot.tscn" id="6_mwbo0"]
+[ext_resource type="PackedScene" uid="uid://csrh36k5gjj8r" path="res://UI/w_equipment_slot.tscn" id="6_qxd2e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56asy"]
+atlas = ExtResource("4_fuvcs")
+region = Rect2(480, 672, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmr7w"]
+atlas = ExtResource("5_mmr7w")
+region = Rect2(145, 81, 46, 14)
+
+[node name="W_Inventory" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_xq4g6")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(260, 180)
+layout_mode = 2
+texture = ExtResource("2_56asy")
+region_rect = Rect2(16, 224, 48, 48)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+texture = ExtResource("2_56asy")
+region_rect = Rect2(0, 64, 64, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.5
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(13, 10)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_fuvcs")
+theme_override_font_sizes/font_size = 16
+text = "背包"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(40, 20)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+text = "X"
+icon = SubResource("AtlasTexture_56asy")
+flat = true
+icon_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("5_mmr7w")
+region_rect = Rect2(49, 97, 30, 30)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VLeftContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="W_HandSlot" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VLeftContainer" instance=ExtResource("6_qxd2e")]
+layout_mode = 2
+
+[node name="W_WeaponSlot" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VLeftContainer" instance=ExtResource("6_qxd2e")]
+layout_mode = 2
+
+[node name="VMiddleContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="W_HeadSlot" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VMiddleContainer" instance=ExtResource("6_qxd2e")]
+layout_mode = 2
+
+[node name="W_BodySlot" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VMiddleContainer" instance=ExtResource("6_qxd2e")]
+layout_mode = 2
+
+[node name="W_WaistSlot" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VMiddleContainer" instance=ExtResource("6_qxd2e")]
+layout_mode = 2
+
+[node name="W_FeetSlot" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VMiddleContainer" instance=ExtResource("6_qxd2e")]
+layout_mode = 2
+
+[node name="VRightContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="W_NeckSlot" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VRightContainer" instance=ExtResource("6_qxd2e")]
+layout_mode = 2
+
+[node name="W_FingerSlot1" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VRightContainer" instance=ExtResource("6_qxd2e")]
+layout_mode = 2
+
+[node name="W_FingerSlot2" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VRightContainer" instance=ExtResource("6_qxd2e")]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+texture = ExtResource("5_mmr7w")
+region_rect = Rect2(49, 97, 30, 30)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TabBar" type="TabBar" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_fuvcs")
+theme_override_font_sizes/font_size = 11
+current_tab = 0
+tab_count = 4
+tab_0/title = "全部"
+tab_1/title = "装备"
+tab_2/title = "消耗品"
+tab_3/title = "材料"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+texture = ExtResource("2_56asy")
+region_rect = Rect2(243, 204, 58, 24)
+patch_margin_left = 2
+patch_margin_top = 1
+patch_margin_right = 2
+patch_margin_bottom = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 4
+
+[node name="W_ItemSlot" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_mwbo0")]
+layout_mode = 2
+
+[node name="W_ItemSlot2" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_mwbo0")]
+layout_mode = 2
+
+[node name="W_ItemSlot3" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_mwbo0")]
+layout_mode = 2
+
+[node name="W_ItemSlot4" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_mwbo0")]
+layout_mode = 2
+
+[node name="W_ItemSlot5" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_mwbo0")]
+layout_mode = 2
+
+[node name="W_ItemSlot6" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_mwbo0")]
+layout_mode = 2
+
+[node name="W_ItemSlot7" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_mwbo0")]
+layout_mode = 2
+
+[node name="W_ItemSlot8" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_mwbo0")]
+layout_mode = 2
+
+[node name="W_ItemSlot9" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_mwbo0")]
+layout_mode = 2
+
+[node name="W_ItemSlot10" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_mwbo0")]
+layout_mode = 2
+
+[node name="W_ItemSlot11" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_mwbo0")]
+layout_mode = 2
+
+[node name="W_ItemSlot12" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_mwbo0")]
+layout_mode = 2
+
+[node name="W_ItemSlot13" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_mwbo0")]
+layout_mode = 2
+script = null
+
+[node name="W_ItemSlot14" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_mwbo0")]
+layout_mode = 2
+script = null
+
+[node name="W_ItemSlot15" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_mwbo0")]
+layout_mode = 2
+script = null
+
+[node name="W_ItemSlot16" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("6_mwbo0")]
+layout_mode = 2
+script = null
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -5
+theme_override_constants/margin_top = -3
+theme_override_constants/margin_right = -5
+theme_override_constants/margin_bottom = -3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="Disassemble" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(40, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_fuvcs")
+theme_override_font_sizes/font_size = 12
+text = "分解"
+icon = SubResource("AtlasTexture_mmr7w")
+flat = true
+autowrap_mode = 1
+icon_alignment = 1
+expand_icon = true
+
+[node name="Arrangement" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(40, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_fuvcs")
+theme_override_font_sizes/font_size = 12
+text = "整理"
+icon = SubResource("AtlasTexture_mmr7w")
+flat = true
+autowrap_mode = 1
+icon_alignment = 1
+expand_icon = true

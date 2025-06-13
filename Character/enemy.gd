@@ -16,6 +16,9 @@ enum Direction {
 @export var max_speed: float = 180
 @export var acceleration: float = 2000
 
+var frozen_speed: float = max_speed * 0.6
+var current_speed: float = max_speed
+
 var default_gravity := ProjectSettings.get("physics/2d/default_gravity") as float
 var pending_damage: Damage # 待处理的伤害
 
@@ -28,6 +31,16 @@ var pending_damage: Damage # 待处理的伤害
 const SILVER = preload("res://Artwork/UI/Fort/Silver.ttf")
 
 signal boss_dead
+
+func _ready() -> void:
+	stats.frozen.connect(_on_frozen)
+
+func _on_frozen() -> void:
+	current_speed = frozen_speed
+	animation_player.speed_scale = 0.6
+	await stats.element_fx_timer.timeout
+	current_speed = max_speed
+	animation_player.speed_scale = 1
 
 func turn_around():
 	if direction == Direction.LEFT:

@@ -24,6 +24,7 @@ var should_move_to_position: bool = false
 
 
 func _ready() -> void:
+	super()
 	detect_area.body_entered.connect(on_player_detected)
 	detect_area.body_exited.connect(on_player_lost)
 	boss_dead.connect(end_attack_frame)
@@ -64,7 +65,7 @@ func tick_physics(state: State, delta: float) -> void: # 状态下持续干什�
 				else:
 					direction = Direction.LEFT
 				
-				move(max_speed / 2, delta)
+				move(current_speed / 2, delta)
 				
 				if global_position.distance_to(battle_start_position.global_position) < 5.0:
 					should_move_to_position = false
@@ -78,10 +79,10 @@ func tick_physics(state: State, delta: float) -> void: # 状态下持续干什�
 				move(0.0, delta)
 		
 		State.WALK:
-			move(max_speed / 4, delta)
+			move(current_speed / 4, delta)
 		
 		State.RUN:
-			move(max_speed, delta)
+			move(current_speed, delta)
 		
 		State.WAIT:
 			move(0.0, delta)

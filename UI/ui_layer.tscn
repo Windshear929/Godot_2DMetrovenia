@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdiop1dsvjst6"]
+
+[ext_resource type="Texture2D" uid="uid://cufe0730a0w7r" path="res://Artwork/Icon/BG 3c.png" id="1_jr1lk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbgg0"]
+atlas = ExtResource("1_jr1lk")
+region = Rect2(0, 320, 32, 32)
+
+[node name="UILayer" type="CanvasLayer"]
+layer = 128
+visible = false
+
+[node name="MainUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BTN_Inventory" type="Button" parent="MainUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 8.0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(20, 20)
+icon = SubResource("AtlasTexture_hbgg0")
+flat = true
+icon_alignment = 1

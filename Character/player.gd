@@ -38,17 +38,26 @@ const GROUND_STATES := [
 	State.ATTACK1, State.ATTACK2, State.ATTACK3,
 	]
 const RUN_SPEED := 160.0
+const JUMP_VELOCITY := -340.0
+const SLIDE_SPEED := 250.0
+const WALL_JUMP_VELOCITY := Vector2(420, -390)
+const FROZEN_SPEED := RUN_SPEED * 0.6
+const FROZEN_JUMP := JUMP_VELOCITY * 0.8
+const FROZEN_SLIDE := SLIDE_SPEED * 0.6
+const FROZEN_WALL_JUMP := WALL_JUMP_VELOCITY * 0.6
+
 const FLOOR_ACCELERATION := RUN_SPEED / 0.125
 const AIR_ACCELERATION := RUN_SPEED / 0.1
-const JUMP_VELOCITY := -340.0
-const WALL_JUMP_VELOCITY := Vector2(420, -390)
 const KNOCKBACK_POWER := 300.0
 const SLIDE_DURATION := 0.1
-const SLIDE_SPEED := 250.0
 const SLIDE_ENERGY := 35
 const LANDING_HEIGHT := 100.0
 const SILVER = preload("res://Artwork/UI/Fort/Silver.ttf")
 
+var current_speed := RUN_SPEED
+var current_jump := JUMP_VELOCITY
+var current_slide := SLIDE_SPEED
+var current_wall_jump := WALL_JUMP_VELOCITY
 var default_gravity := ProjectSettings.get("physics/2d/default_gravity") as float
 var is_first_tick := false # 判断当前是否在某状态的第一帧
 var is_combo_requested := false
@@ -79,6 +88,21 @@ var steps_on_wood_sound: Array[AudioStream] = [
 
 func _ready() -> void:
 	stand(default_gravity, 0.01)
+	Game.register_player(self)
+	stats.frozen.connect(_on_frozen)
+
+func _on_frozen() -> void:
+	current_speed = FROZEN_SPEED
+	current_jump = FROZEN_JUMP
+	current_slide = FROZEN_SLIDE
+	current_wall_jump = FROZEN_WALL_JUMP
+	animation_player.speed_scale = 0.6
+	await stats.element_fx_timer.timeout
+	current_speed = RUN_SPEED
+	current_jump = JUMP_VELOCITY
+	current_slide = SLIDE_SPEED
+	current_wall_jump = WALL_JUMP_VELOCITY
+	animation_player.speed_scale = 1
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
@@ -86,8 +110,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_released("jump"):
 		jump_request_timer.stop()
-		if velocity.y < JUMP_VELOCITY / 2:
-			velocity.y = JUMP_VELOCITY / 2
+		if velocity.y < current_jump / 2:
+			velocity.y = current_jump / 2
 	
 	if event.is_action_pressed("attack") and can_combo:
 		is_combo_requested = true
@@ -158,7 +182,7 @@ func move(gravity: float, delta: float) -> void:
 	if state_machine.current_state != State.PEAK:
 		movement = Input.get_axis("move_left", "move_right")
 	var acceleration := FLOOR_ACCELERATION if is_on_floor() else AIR_ACCELERATION
-	velocity.x = move_toward(velocity.x, movement * RUN_SPEED, acceleration * delta)
+	velocity.x = move_toward(velocity.x, movement * current_speed, acceleration * delta)
 	velocity.y += gravity * delta
 	
 	if not is_zero_approx(movement) and state_machine.current_state != State.PEAK:
@@ -174,7 +198,7 @@ func stand(gravity: float,delta: float) -> void:
 	move_and_slide()
 
 func slide(delta: float) -> void:
-	velocity.x = graphics.scale.x * SLIDE_SPEED
+	velocity.x = graphics.scale.x * current_slide
 	velocity.y += default_gravity * delta
 	
 	move_and_slide()
@@ -340,7 +364,7 @@ func transition_state(from: State, to: State) -> void: # 刚进入某个状态�
 		
 		State.JUMP:
 			animation_player.play("jump")
-			velocity.y = JUMP_VELOCITY
+			velocity.y = current_jump
 			coyote_timer.stop()
 			jump_request_timer.stop()
 			SoundManager.play_sfx("PlayerJumpSFX")
@@ -363,7 +387,7 @@ func transition_state(from: State, to: State) -> void: # 刚进入某个状态�
 		
 		State.WALL_JUMP:
 			animation_player.play("jump")
-			velocity = WALL_JUMP_VELOCITY
+			velocity = current_wall_jump
 			velocity.x *= get_wall_normal().x
 			jump_request_timer.stop()
 			SoundManager.play_sfx("PlayerJumpSFX")
@@ -398,6 +422,7 @@ func transition_state(from: State, to: State) -> void: # 刚进入某个状态�
 			animation_player.play("hurt")
 			SoundManager.play_sfx("PlayerHurtSFX")
 			stats.health -= pending_damage.amount
+			print("Player受到%s伤害。" % pending_damage.amount)
 			
 			# 伤害来源的全局坐标指向自己的坐标作为被击退的方向
 			var dir := pending_damage.source.global_position.direction_to(global_position)
@@ -462,8 +487,9 @@ func _on_hurtbox_hurt(attacker: Hitbox) -> void:
 			attacker_stats.target_dodge.connect(show_dodge_info)
 		
 		attacker_stats.do_damage(stats)
-		if attacker_stats.total_damage > 0:
+		attacker_stats.do_magic_damage(stats)
+		if attacker_stats.total_damage > 0 or attacker_stats.total_m_damage > 0:
 			pending_damage = Damage.new()
-			pending_damage.amount = attacker_stats.total_damage
+			pending_damage.amount = attacker_stats.total_damage + attacker_stats.total_m_damage
 			attacker_stats.total_damage = 0
 			pending_damage.source = attacker.owner

@@ -4,14 +4,12 @@ extends Node
 signal health_change
 signal energy_change
 signal target_dodge
-
-const ELEMENTAL_PROBABILITY = 1 / 3
+signal frozen
 
 @export var ignite_fx: AnimatedSprite2D
 @export var freeze_fx: AnimatedSprite2D
 @export var shock_fx: AnimatedSprite2D
 @export var element_fx_timer: Timer
-@export var animation_player: AnimationPlayer
 
 @export_category("主要属性")
 @export var strength: Attribute = Attribute.new() ## 每点属性值直接影响角色的攻击力，0.5倍影响角色的暴击伤害
@@ -21,7 +19,7 @@ const ELEMENTAL_PROBABILITY = 1 / 3
 ## 属性值(>31): evasion = 30 + (agility -30) * 0.2;
 @export var agility: Attribute = Attribute.new()
 @export var intelligence: Attribute = Attribute.new() ## 每点属性直接影响魔法伤害
-@export var vitality: Attribute = Attribute.new() ## 每点属性增加5点最大生命值上限
+@export var vitality: Attribute = Attribute.new() ## 每点属性增加5点最大生命值上限，0.2倍影响角色的防御
 @export var luck: Attribute = Attribute.new() ## 暴击率 = 50% * (1- e^(-k * luck):luck属性影响暴击率上限不会超过50%
 
 @export_category("进攻属性")
@@ -31,7 +29,7 @@ const ELEMENTAL_PROBABILITY = 1 / 3
 
 @export_category("防守属性")
 @export var max_health: Attribute = Attribute.new()
-@export var armor: Attribute = Attribute.new()
+@export var armour: Attribute = Attribute.new()
 @export var evasion: Attribute = Attribute.new()
 @export var magic_resist: Attribute = Attribute.new()
 
@@ -41,9 +39,9 @@ const ELEMENTAL_PROBABILITY = 1 / 3
 @export var attack_energy_regenerate: Attribute = Attribute.new()
 
 @export_category("魔法属性")
-@export var fire_damage: Attribute = Attribute.new()
-@export var ice_damage: Attribute = Attribute.new()
-@export var thunder_damage: Attribute = Attribute.new()
+@export var fire_damage: Attribute = Attribute.new() ## 攻击让角色进入点燃状态，持续损失生命值
+@export var ice_damage: Attribute = Attribute.new() ## 攻击有50%概率让角色冰冻，降低行为速度
+@export var thunder_damage: Attribute = Attribute.new() ## 攻击让角色进入震颤状态，防御值和抵抗值无效
 
 # @export初始化顺序高于@onready，借此让用户在检查器修改max_health后也可以有效的更新health的值，以免导入默认max_health的值
 @onready var health: int = get_max_health():
@@ -68,7 +66,6 @@ var is_dodge_attack: bool = false
 var is_critical_attack: bool = false
 var is_element_affect: bool = false
 var ignite_damage_timer: Timer
-var is_freeze: bool = false
 var is_shock: bool = false
 
 func _init() -> void:
@@ -104,7 +101,8 @@ func do_damage(_target_stats: Stats) -> void:
 	if is_critical_attack:
 		total_damage = calculate_critical_damage(total_damage)
 	
-	total_damage = check_target_armor(_target_stats, total_damage)
+	if is_shock: return
+	total_damage = check_target_armour(_target_stats, total_damage)
 
 
 func do_magic_damage(_target_stats: Stats) -> void:
@@ -130,26 +128,14 @@ func do_magic_damage(_target_stats: Stats) -> void:
 	if can_shock_damage:
 		print("Shock! Thunder Damage: ", _thunder_damage)
 	
-	while (not can_ignite_damage and not can_freeze_damage and not can_shock_damage):
-		if (randf() < ELEMENTAL_PROBABILITY and _fire_damage > 0):
-			can_ignite_damage = true
-			_ice_damage = 0
-			_thunder_damage = 0
-			break
-		if (randf() < ELEMENTAL_PROBABILITY and _ice_damage > 0):
-			can_freeze_damage = true
-			_fire_damage = 0
-			_thunder_damage = 0
-			break
-		if (randf() < ELEMENTAL_PROBABILITY and _thunder_damage > 0):
-			can_shock_damage = true
-			_fire_damage = 0
-			_ice_damage = 0
-			break
+	if not can_ignite_damage and not can_freeze_damage and not can_shock_damage:
+		return
+		
 	element_effect(_target_stats, can_ignite_damage, can_freeze_damage, can_shock_damage)
 	
 	total_m_damage = _fire_damage + _ice_damage + _thunder_damage + intelligence.get_value()
 	
+	if is_shock: return
 	total_m_damage = check_target_resist(_target_stats, total_m_damage)
 
 func element_effect(target: Stats, can_ignite: bool, can_freeze: bool, can_shock: bool) -> void:
@@ -162,23 +148,47 @@ func element_effect(target: Stats, can_ignite: bool, can_freeze: bool, can_shock
 		target.ignite_damage_timer.start()
 		show_effects(target, target.ignite_fx, "ignite", Color.ORANGE)
 	if can_freeze:
-		show_effects(target, target.freeze_fx, "freeze", Color.DODGER_BLUE)
+		if randf() < 0.5:
+			target.frozen.emit()
+			show_effects(target, target.freeze_fx, "freeze", Color.DODGER_BLUE)
+		else: target.is_element_affect = false
 	if can_shock:
+		is_shock = true
 		show_effects(target, target.shock_fx, "shock", Color.GOLD)
 
 func show_effects(target: Stats, anim: AnimatedSprite2D, anim_name: String, color: Color) -> void:
-	var node: = target.get_parent().find_child("Graphics") as Node2D
-	
-	anim.visible = true
-	anim.play(anim_name)
-	node.modulate = color
-	target.element_fx_timer.start()
-	await anim.animation_finished
-	anim.visible = false
-	await target.element_fx_timer.timeout
-	node.modulate = Color.WHITE
-	target.ignite_damage_timer.stop()
-	target.is_element_affect = false
+	if target.get_parent().is_in_group("boss"):
+		var material := target.get_parent().find_child("Sprite2D", true, false).material as ShaderMaterial
+		material.set_shader_parameter("effect_tint", 1.0)
+		anim.visible = true
+		anim.play(anim_name)
+		material.set_shader_parameter("target_color", color)
+		target.element_fx_timer.start()
+		await anim.animation_finished
+		anim.visible = false
+		await target.element_fx_timer.timeout
+		material.set_shader_parameter("target_color", Color.WHITE)
+		target.ignite_damage_timer.stop()
+		is_shock = false
+		target.is_element_affect = false
+	else:
+		var node
+		if target.name == "PlayerStats":
+			node = Game.player.find_child("Graphics")
+		else:
+			node = target.get_parent().find_child("Graphics") as Node2D
+		
+		anim.visible = true
+		anim.play(anim_name)
+		node.modulate = color
+		target.element_fx_timer.start()
+		await anim.animation_finished
+		anim.visible = false
+		await target.element_fx_timer.timeout
+		node.modulate = Color.WHITE
+		target.ignite_damage_timer.stop()
+		is_shock = false
+		target.is_element_affect = false
 
 
 func target_can_avoid_attack(_target_stats: Stats) -> bool:
@@ -195,7 +205,10 @@ func target_can_avoid_attack(_target_stats: Stats) -> bool:
 	
 	var total_evasion = target_base_evasion + agility_evasion
 	total_evasion = clamp(total_evasion, 0.0, 80.0)
-	print("当前回避率：", total_evasion, "%")
+	if _target_stats.name == "PlayerStats":
+		print("%s当前回避率：%s%%" % ["Player", total_evasion])
+	else:
+		print("%s当前回避率：%s%%" % [_target_stats.get_parent().name, total_evasion])
 	
 	if randf_range(0.0, 100.0) < total_evasion:
 		return true
@@ -205,7 +218,10 @@ func can_crit() -> bool:
 	var base_crit_chance = crit_chance.get_value()
 	var luck_crit_chance = roundi(0.5 * (1 - exp(-0.03 * luck.get_value())) * 100)
 	var total_chance = min(base_crit_chance + luck_crit_chance, 100.0)
-	print("暴击率： ", total_chance, "%")
+	if self.name == "PlayerStats":
+		print("%s暴击率：%s%%" % ["Player", total_chance])
+	else:
+		print("%s暴击率：%s%%" % [self.get_parent().name, total_chance])
 	return randf_range(0.0, 100.0) <= total_chance
 
 func calculate_critical_damage(_damage: int) -> int:
@@ -213,8 +229,9 @@ func calculate_critical_damage(_damage: int) -> int:
 	var crit_damage = _damage * total_critical_power
 	return roundi(crit_damage)
 
-func check_target_armor(_target_stats: Stats, _damage: int) -> int:
-	_damage -= _target_stats.armor.get_value()
+func check_target_armour(_target_stats: Stats, _damage: int) -> int:
+	var total_armour = _target_stats.armour.get_value() + roundi(_target_stats.vitality.get_value() * 0.2)
+	_damage -= total_armour
 	_damage = clamp(_damage, 1, 9999) # 防御抵消攻击最低也会造成1点伤害，且伤害的上限不会超过9999
 	return _damage
 
@@ -236,7 +253,7 @@ func to_dict() -> Dictionary:
 		"crit_power": crit_power.to_dict(),
 		
 		"max_health": max_health.to_dict(),
-		"armor": armor.to_dict(),
+		"armour": armour.to_dict(),
 		"evasion": evasion.to_dict(),
 		"magic_resist": magic_resist.to_dict(),
 		
@@ -259,7 +276,7 @@ func from_dict(dict: Dictionary) -> void:
 	crit_power.from_dict(dict.get("crit_power", []))
 	
 	max_health.from_dict(dict.get("max_health", []))
-	armor.from_dict(dict.get("armor", []))
+	armour.from_dict(dict.get("armour", []))
 	evasion.from_dict(dict.get("evasion", []))
 	magic_resist.from_dict((dict.get("magic_resist", [])))
 

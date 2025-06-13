@@ -1,0 +1,2 @@
+class_name W_EquipmentSlot
+extends W_ItemSlot

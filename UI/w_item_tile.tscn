@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://fpv2cs286b0c"]
+
+[ext_resource type="Script" uid="uid://d2jbf5m7tfefa" path="res://UI/w_item_tile.gd" id="1_dkcqj"]
+[ext_resource type="Texture2D" uid="uid://dkwwrca5juyou" path="res://Artwork/Icon/#2 - Transparent Icons & Drop Shadow.png" id="1_vjgxa"]
+[ext_resource type="FontFile" uid="uid://bksb5v4yvd2ks" path="res://Artwork/UI/Fort/Silver.ttf" id="2_dkcqj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxd2e"]
+atlas = ExtResource("1_vjgxa")
+region = Rect2(320, 160, 32, 32)
+
+[node name="Control" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_dkcqj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(12, 12)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_qxd2e")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -24.0
+offset_right = -10.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("2_dkcqj")
+theme_override_font_sizes/font_size = 12
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 2

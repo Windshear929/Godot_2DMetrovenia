@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ddl0mhwg8t8wq"]
+[gd_scene load_steps=43 format=3 uid="uid://ddl0mhwg8t8wq"]
 
 [ext_resource type="PackedScene" uid="uid://0o74rhlcl0mw" path="res://Character/enemy.tscn" id="1_uo517"]
 [ext_resource type="Script" uid="uid://bmbv3fqsupyeh" path="res://Character/wild_boar.gd" id="2_s7x8x"]
@@ -17,6 +17,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fuva3"]
 shader = ExtResource("3_ndboh")
 shader_parameter/quantity = 0.0
+shader_parameter/effect_tint = 1.0
+shader_parameter/target_color = Color(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hcng"]
 size = Vector2(48, 32)
@@ -193,6 +195,8 @@ tracks/7/keys = {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ndboh"]
 shader = ExtResource("3_ndboh")
 shader_parameter/quantity = 0.0
+shader_parameter/effect_tint = 0.0
+shader_parameter/target_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_byarl"]
 resource_name = "Attack"
@@ -647,21 +651,45 @@ _data = {
 &"walk": SubResource("Animation_s7x8x")
 }
 
+[sub_resource type="Resource" id="Resource_eb4vq"]
+script = ExtResource("11_2t476")
+base_value = 50
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[sub_resource type="Resource" id="Resource_b7yp4"]
+script = ExtResource("11_2t476")
+base_value = 0
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[sub_resource type="Resource" id="Resource_h6u1q"]
+script = ExtResource("11_2t476")
+base_value = 0
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[sub_resource type="Resource" id="Resource_uib74"]
+script = ExtResource("11_2t476")
+base_value = 100
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
+[sub_resource type="Resource" id="Resource_2wxdk"]
+script = ExtResource("11_2t476")
+base_value = 0
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
+
 [sub_resource type="Resource" id="Resource_2t476"]
 script = ExtResource("11_2t476")
-base_value = 10
+base_value = 0
 modifiers = []
 metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
 [sub_resource type="Resource" id="Resource_j7i2t"]
 script = ExtResource("11_2t476")
 base_value = 2000
-modifiers = []
-metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
-
-[sub_resource type="Resource" id="Resource_eb4vq"]
-script = ExtResource("11_2t476")
-base_value = 0
 modifiers = []
 metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
@@ -725,9 +753,13 @@ libraries = {
 }
 
 [node name="Stats" parent="." index="4"]
+strength = SubResource("Resource_eb4vq")
+agility = SubResource("Resource_b7yp4")
+intelligence = SubResource("Resource_h6u1q")
+vitality = SubResource("Resource_uib74")
+luck = SubResource("Resource_2wxdk")
 damage = SubResource("Resource_2t476")
 max_health = SubResource("Resource_j7i2t")
-evasion = SubResource("Resource_eb4vq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
 layer = 10

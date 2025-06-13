@@ -20,6 +20,7 @@ const KNOCKBACK_POWER := 300.0
 @onready var boar_hurt_sfx: AudioStreamPlayer = $BoarHurtSFX
 
 func _ready() -> void:
+	super()
 	status_panel.modulate.a = 0.0
 
 func can_see_player() -> bool:
@@ -33,12 +34,12 @@ func tick_physics(state: State, delta: float) -> void:
 			move(0.0, delta)
 		
 		State.WALK:
-			move(max_speed / 4, delta)
+			move(current_speed / 4, delta)
 		
 		State.RUN:
 			if wall_checker.is_colliding() or not floor_checker.is_colliding():
 				turn_around()
-			move(max_speed, delta)
+			move(current_speed, delta)
 			if can_see_player():
 				calm_down_timer.start()
 

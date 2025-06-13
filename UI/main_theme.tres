@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=5 format=3 uid="uid://davy6s5ji0jrj"]
 
 [ext_resource type="FontFile" uid="uid://bksb5v4yvd2ks" path="res://Artwork/UI/Fort/Silver.ttf" id="1_2nl5o"]
-[ext_resource type="Texture2D" uid="uid://dkiu4yuhqdn6a" path="res://Artwork/Legacy-Fantasy - High Forest 2.0/HUD/Base-01.png" id="1_h32ur"]
+[ext_resource type="Texture2D" uid="uid://dkiu4yuhqdn6a" path="res://Artwork/UI/HUD/Base-01.png" id="1_h32ur"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h32ur"]
 content_margin_left = 8.0

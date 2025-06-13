@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl3hm14ur6531"]
+
+[ext_resource type="Script" uid="uid://cplbi7dcqfppo" path="res://UI/w_item_slot.gd" id="1_gncdr"]
+[ext_resource type="Texture2D" uid="uid://chbinle58lqdw" path="res://Artwork/UI/HUD/GUI.png" id="1_k6glc"]
+[ext_resource type="PackedScene" uid="uid://fpv2cs286b0c" path="res://UI/w_item_tile.tscn" id="3_k6glc"]
+
+[node name="W_ItemSlot" type="MarginContainer"]
+custom_minimum_size = Vector2(32, 32)
+script = ExtResource("1_gncdr")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("1_k6glc")
+region_rect = Rect2(81, 97, 30, 30)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="W_ItemTile" parent="NinePatchRect" instance=ExtResource("3_k6glc")]

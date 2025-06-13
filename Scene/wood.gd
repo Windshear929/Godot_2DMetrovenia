@@ -9,6 +9,7 @@ extends World
 
 
 func _ready() -> void:
+	_player_get_effects() # 因为wood的_ready函数重写，所以需要再调用一下
 	var combined_used := get_combine_used_rect()
 	var used := combined_used.grow(-1) # 获取关卡矩形尺寸中非空的图块左上和右下的坐标
 	var tile_size := geometry.tile_set.tile_size # 获取瓦片地图的图块单位尺寸

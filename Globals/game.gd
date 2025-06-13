@@ -1,11 +1,14 @@
 extends Node
 
+#signal game_start
+
 const SAVE_PATH := "user://brave.sav"
 
 # 场景的名称 => {
 # 	enemies_alive => [ 敌人的路径 ]
 # }
 var world_states := {}
+var player: Player = null
 
 @onready var player_stats: Stats = $PlayerStats
 @onready var color_rect: ColorRect = $ColorRect
@@ -13,6 +16,9 @@ var world_states := {}
 
 func _ready() -> void:
 	color_rect.color.a = 0
+
+func register_player(p: Player) -> void:
+	player = p
 
 func change_scene(path: String, params := {}) -> void:
 	var duration := params.get("duration", 0.2) as float
@@ -41,6 +47,7 @@ func change_scene(path: String, params := {}) -> void:
 	if tree.current_scene is World:
 		var new_scene := tree.current_scene.scene_file_path.get_file().get_basename()
 		if new_scene in world_states:
+			await tree.process_frame
 			tree.current_scene.from_dict(world_states[new_scene])
 		
 		if "entry_point" in params:
@@ -51,6 +58,7 @@ func change_scene(path: String, params := {}) -> void:
 					break
 		
 		if "position" in params and "direction" in params:
+			await tree.process_frame
 			tree.current_scene.update_player(params.position, params.direction)
 	
 	tree.paused = false

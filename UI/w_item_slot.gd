@@ -1,0 +1,2 @@
+class_name W_ItemSlot
+extends MarginContainer

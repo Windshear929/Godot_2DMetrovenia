@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://gokvm4n23amu"]
+
+[ext_resource type="Texture2D" uid="uid://dkwwrca5juyou" path="res://Artwork/Icon/#2 - Transparent Icons & Drop Shadow.png" id="1_5cuhv"]
+[ext_resource type="Script" uid="uid://c3ud25tw1bnv1" path="res://Objects/item_data.gd" id="1_dbmui"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rca7d"]
+atlas = ExtResource("1_5cuhv")
+region = Rect2(256, 544, 32, 32)
+
+[resource]
+script = ExtResource("1_dbmui")
+item_type = 0
+item_name = "Skins"
+item_icon = SubResource("AtlasTexture_rca7d")
+item_id = ""
+drop_chance = 0.0
+metadata/_custom_type_script = "uid://c3ud25tw1bnv1"

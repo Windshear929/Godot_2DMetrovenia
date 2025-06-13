@@ -1,299 +1,78 @@
-[gd_scene load_steps=47 format=3 uid="uid://c7de0gp8b05pu"]
+[gd_scene load_steps=13 format=3 uid="uid://c7de0gp8b05pu"]
 
 [ext_resource type="Script" uid="uid://dfxjeh1wt5qb" path="res://Globals/game.gd" id="1_hv63o"]
 [ext_resource type="Script" uid="uid://dp0oddbjdu1ob" path="res://Classes/stats.gd" id="2_7rqii"]
 [ext_resource type="Script" uid="uid://cipqe1pvd7v1t" path="res://Classes/attribute.gd" id="3_kpgkj"]
-[ext_resource type="Texture2D" uid="uid://c74k1yeb8w547" path="res://Artwork/FX/Burst of ice.png" id="4_ox044"]
-[ext_resource type="Texture2D" uid="uid://c3e02de3rg0ry" path="res://Artwork/FX/burning_end_1.png" id="5_f235b"]
-[ext_resource type="Texture2D" uid="uid://d11c3yae6q52p" path="res://Artwork/FX/burning_start_1.png" id="7_vt647"]
-[ext_resource type="Texture2D" uid="uid://b6132av2bgah1" path="res://Artwork/FX/Eletric A-Sheet.png" id="8_0aagl"]
-
-[sub_resource type="Resource" id="Resource_ox044"]
-script = ExtResource("3_kpgkj")
-base_value = 5
-modifiers = []
-metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
-
-[sub_resource type="Resource" id="Resource_f235b"]
-script = ExtResource("3_kpgkj")
-base_value = 5
-modifiers = []
-metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
-
-[sub_resource type="Resource" id="Resource_nnuyt"]
-script = ExtResource("3_kpgkj")
-base_value = 5
-modifiers = []
-metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
-
-[sub_resource type="Resource" id="Resource_vt647"]
-script = ExtResource("3_kpgkj")
-base_value = 5
-modifiers = []
-metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
-
-[sub_resource type="Resource" id="Resource_3pfm4"]
-script = ExtResource("3_kpgkj")
-base_value = 150
-modifiers = []
-metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
-
-[sub_resource type="Resource" id="Resource_a75qt"]
-script = ExtResource("3_kpgkj")
-base_value = 50
-modifiers = []
-metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
-
-[sub_resource type="Resource" id="Resource_0aagl"]
-script = ExtResource("3_kpgkj")
-base_value = 0
-modifiers = []
-metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
 [sub_resource type="Resource" id="Resource_kpgkj"]
 script = ExtResource("3_kpgkj")
-base_value = 120
-modifiers = []
-metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
-
-[sub_resource type="Resource" id="Resource_3n5g3"]
-script = ExtResource("3_kpgkj")
-base_value = 100
+base_value = 5
 modifiers = []
 metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
 [sub_resource type="Resource" id="Resource_j27jc"]
 script = ExtResource("3_kpgkj")
-base_value = 100
+base_value = 5
 modifiers = []
 metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
 [sub_resource type="Resource" id="Resource_c673k"]
 script = ExtResource("3_kpgkj")
-base_value = 8
+base_value = 5
 modifiers = []
 metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
 [sub_resource type="Resource" id="Resource_ejell"]
 script = ExtResource("3_kpgkj")
-base_value = 4
+base_value = 5
 modifiers = []
 metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
-[sub_resource type="Resource" id="Resource_3y8ai"]
+[sub_resource type="Resource" id="Resource_a75qt"]
 script = ExtResource("3_kpgkj")
-base_value = 10
+base_value = 5
 modifiers = []
 metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
-[sub_resource type="Resource" id="Resource_rec4r"]
+[sub_resource type="Resource" id="Resource_ox044"]
 script = ExtResource("3_kpgkj")
-base_value = 0
+base_value = 200
 modifiers = []
 metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
-[sub_resource type="Resource" id="Resource_ebm5x"]
+[sub_resource type="Resource" id="Resource_f235b"]
 script = ExtResource("3_kpgkj")
-base_value = 0
+base_value = 100
 modifiers = []
 metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2xiu6"]
-atlas = ExtResource("7_vt647")
-region = Rect2(0, 0, 24, 32)
+[sub_resource type="Resource" id="Resource_nnuyt"]
+script = ExtResource("3_kpgkj")
+base_value = 3
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r1pns"]
-atlas = ExtResource("7_vt647")
-region = Rect2(24, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t83ae"]
-atlas = ExtResource("7_vt647")
-region = Rect2(48, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i8300"]
-atlas = ExtResource("7_vt647")
-region = Rect2(72, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y7xjm"]
-atlas = ExtResource("5_f235b")
-region = Rect2(0, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8jtjy"]
-atlas = ExtResource("5_f235b")
-region = Rect2(24, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ru6d"]
-atlas = ExtResource("5_f235b")
-region = Rect2(48, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jd30h"]
-atlas = ExtResource("5_f235b")
-region = Rect2(72, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qirpv"]
-atlas = ExtResource("5_f235b")
-region = Rect2(96, 0, 24, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_a75qt"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2xiu6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r1pns")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t83ae")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i8300")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y7xjm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8jtjy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4ru6d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jd30h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qirpv")
-}],
-"loop": false,
-"name": &"ignite",
-"speed": 12.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gac0p"]
-atlas = ExtResource("4_ox044")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l2qy7"]
-atlas = ExtResource("4_ox044")
-region = Rect2(0, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jsnnp"]
-atlas = ExtResource("4_ox044")
-region = Rect2(0, 256, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sdbjd"]
-atlas = ExtResource("4_ox044")
-region = Rect2(0, 384, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_shar4"]
-atlas = ExtResource("4_ox044")
-region = Rect2(0, 512, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_puc1x"]
-atlas = ExtResource("4_ox044")
-region = Rect2(0, 640, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_043ed"]
-atlas = ExtResource("4_ox044")
-region = Rect2(0, 768, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ox044"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gac0p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l2qy7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jsnnp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sdbjd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_shar4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_puc1x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_043ed")
-}],
-"loop": false,
-"name": &"freeze",
-"speed": 12.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pu5vd"]
-atlas = ExtResource("8_0aagl")
-region = Rect2(0, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hgmns"]
-atlas = ExtResource("8_0aagl")
-region = Rect2(192, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xijp8"]
-atlas = ExtResource("8_0aagl")
-region = Rect2(96, 96, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ug28o"]
-atlas = ExtResource("8_0aagl")
-region = Rect2(0, 192, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tulx0"]
-atlas = ExtResource("8_0aagl")
-region = Rect2(192, 192, 96, 96)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_f235b"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pu5vd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hgmns")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xijp8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ug28o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tulx0")
-}],
-"loop": false,
-"name": &"shock",
-"speed": 12.0
-}]
+[sub_resource type="Resource" id="Resource_vt647"]
+script = ExtResource("3_kpgkj")
+base_value = 6
+modifiers = []
+metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
 [node name="Game" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_hv63o")
 
-[node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("ignite_fx", "freeze_fx", "shock_fx", "element_fx_timer")]
+[node name="PlayerStats" type="Node" parent="."]
 script = ExtResource("2_7rqii")
-ignite_fx = NodePath("../IgniteEffects")
-freeze_fx = NodePath("../FreezeEffects")
-shock_fx = NodePath("../ShockEffects")
-element_fx_timer = NodePath("../ElementTimer")
-strength = SubResource("Resource_ox044")
-agility = SubResource("Resource_f235b")
-intelligence = SubResource("Resource_nnuyt")
-vitality = SubResource("Resource_vt647")
-luck = SubResource("Resource_3pfm4")
-damage = SubResource("Resource_a75qt")
-crit_chance = SubResource("Resource_0aagl")
-max_health = SubResource("Resource_kpgkj")
-evasion = SubResource("Resource_3n5g3")
-max_energy = SubResource("Resource_j27jc")
-energy_regenerate = SubResource("Resource_c673k")
-attack_energy_regenerate = SubResource("Resource_ejell")
-fire_damage = SubResource("Resource_3y8ai")
-ice_damage = SubResource("Resource_rec4r")
-thunder_damage = SubResource("Resource_ebm5x")
+strength = SubResource("Resource_kpgkj")
+agility = SubResource("Resource_j27jc")
+intelligence = SubResource("Resource_c673k")
+vitality = SubResource("Resource_ejell")
+luck = SubResource("Resource_a75qt")
+max_health = SubResource("Resource_ox044")
+max_energy = SubResource("Resource_f235b")
+energy_regenerate = SubResource("Resource_nnuyt")
+attack_energy_regenerate = SubResource("Resource_vt647")
 metadata/_custom_type_script = "uid://dp0oddbjdu1ob"
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -304,26 +83,3 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
-
-[node name="IgniteEffects" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_a75qt")
-animation = &"ignite"
-
-[node name="FreezeEffects" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(0, -40)
-scale = Vector2(0.7, 0.7)
-sprite_frames = SubResource("SpriteFrames_ox044")
-animation = &"freeze"
-
-[node name="ShockEffects" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(0, -40)
-sprite_frames = SubResource("SpriteFrames_f235b")
-animation = &"shock"
-
-[node name="ElementTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
