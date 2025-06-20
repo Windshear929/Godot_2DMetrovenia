@@ -16,6 +16,11 @@ enum Direction {
 @export var max_speed: float = 180
 @export var acceleration: float = 2000
 
+@export var drop_item_chance: float = 0.0
+@export var drop_item_data1: Item_data = null
+@export var drop_item_data2: Item_data = null
+
+
 var frozen_speed: float = max_speed * 0.6
 var current_speed: float = max_speed
 
@@ -29,7 +34,9 @@ var pending_damage: Damage # 待处理的伤害
 @onready var sprite_2d: Sprite2D = $Graphics/Sprite2D
 
 const SILVER = preload("res://Artwork/UI/Fort/Silver.ttf")
+const ITEM_OBJECT = preload("res://Objects/item_object.tscn")
 
+@warning_ignore("unused_signal")
 signal boss_dead
 
 func _ready() -> void:
@@ -108,3 +115,30 @@ func show_battle_info(value: int, pos: Vector2, _attacker_stats: Stats):
 func die():
 	stats.is_element_affect = false
 	queue_free()
+
+
+func can_drop_item() -> bool:
+	# TODO: 关于luck属性影响道具掉落的数值还要设法优化
+	var total_chance = drop_item_chance + Game.player_stats.luck.get_value() * 0.01
+	print("该角色道具掉落的概率为：", total_chance * 100, "%")
+	var percentage = randf()
+	print("本次道具掉率计算结果为：", snapped(percentage, 0.01) * 100, "%")
+	if percentage < total_chance:
+		return true
+	return false
+
+
+func drop_item() -> void:
+	var _drop_item = ITEM_OBJECT.instantiate()
+	_drop_item.position = self.global_position - Vector2(0, 5)
+	_drop_item.linear_velocity = Vector2(randf_range(50.0, -50.0), -300.0)
+	get_parent().add_child(_drop_item)
+	var item_data: Item_data = null
+	if drop_item_data2 != null:
+		var pecentage = randf()
+		if pecentage < 0.7:
+			item_data = drop_item_data1
+		else:
+			item_data = drop_item_data2
+	_drop_item.texture_rect.texture = item_data.item_icon
+	_drop_item.object_file = item_data

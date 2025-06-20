@@ -2,8 +2,8 @@ extends HBoxContainer
 
 @export var stats: Stats
 
-@onready var health_bar: TextureProgressBar = $V/HealthBar
-@onready var eased_health_bar: TextureProgressBar = $V/HealthBar/EasedHealthBar
+@onready var health_bar: TextureProgressBar = $V/HealthBarFrame/HealthBar
+@onready var eased_health_bar: TextureProgressBar = $V/HealthBarFrame/HealthBar/EasedHealthBar
 @onready var avatar_box: PanelContainer = $AvatarBox
 @onready var enegy_bar: TextureProgressBar = $V/EnegyBar
 

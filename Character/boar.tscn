@@ -1,10 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://c0n2jas10c6jv"]
+[gd_scene load_steps=28 format=3 uid="uid://c0n2jas10c6jv"]
 
 [ext_resource type="PackedScene" uid="uid://0o74rhlcl0mw" path="res://Character/enemy.tscn" id="1_4h46p"]
 [ext_resource type="Texture2D" uid="uid://dkbfrad1pqokd" path="res://Artwork/Legacy-Fantasy - High Forest 2.0/Mob/Boar/Idle/Idle-Sheet.png" id="2_op1cm"]
 [ext_resource type="Script" uid="uid://11g1iuaq4jlh" path="res://Character/boar.gd" id="2_pygih"]
 [ext_resource type="Texture2D" uid="uid://dafj4fqvm1dcx" path="res://Artwork/Legacy-Fantasy - High Forest 2.0/Mob/Boar/Walk/Walk-Base-Sheet.png" id="3_23e8i"]
+[ext_resource type="Resource" uid="uid://c4qij38018214" path="res://Objects/Items/skin.tres" id="3_cf6xr"]
 [ext_resource type="Texture2D" uid="uid://bdocpk78vr5rd" path="res://Artwork/Legacy-Fantasy - High Forest 2.0/Mob/Boar/Run/Run-Sheet.png" id="4_g3cph"]
+[ext_resource type="Resource" uid="uid://bgyey16fi24d6" path="res://Objects/Items/rock.tres" id="4_oprij"]
 [ext_resource type="Texture2D" uid="uid://cb3v8cvwgti8i" path="res://Artwork/Legacy-Fantasy - High Forest 2.0/Mob/Boar/Hit-Vanish/Hit-Sheet.png" id="5_n0ufi"]
 [ext_resource type="PackedScene" uid="uid://cadgys3c088lc" path="res://UI/status_panel.tscn" id="7_0lykh"]
 [ext_resource type="Script" uid="uid://cipqe1pvd7v1t" path="res://Classes/attribute.gd" id="7_5kmpa"]
@@ -545,6 +547,9 @@ metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 [node name="Boar" instance=ExtResource("1_4h46p")]
 script = ExtResource("2_pygih")
 max_speed = 140.0
+drop_item_chance = 1.0
+drop_item_data1 = ExtResource("3_cf6xr")
+drop_item_data2 = ExtResource("4_oprij")
 
 [node name="Sprite2D" parent="Graphics" index="0"]
 position = Vector2(0, -16)
@@ -601,14 +606,27 @@ max_health = SubResource("Resource_cf6xr")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -18.0
-offset_top = -51.0
-offset_right = 70.0
-offset_bottom = -25.0
+offset_left = -21.0
+offset_top = -32.0
+offset_right = 36.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.6, 1)
+scale = Vector2(0.7, 0.7)
 stats = NodePath("../Stats")
+
+[node name="AvatarBox" parent="StatusPanel" index="0"]
+visible = false
+
+[node name="V" parent="StatusPanel" index="1"]
+custom_minimum_size = Vector2(57, 0)
+size_flags_horizontal = 4
+
+[node name="HealthBar" parent="StatusPanel/V/HealthBarFrame" index="0"]
+value = 1.0
+
+[node name="EnegyBar" parent="StatusPanel/V" index="1"]
+visible = false
 
 [node name="BoarHurtSFX" type="AudioStreamPlayer" parent="." index="7"]
 stream = ExtResource("8_iybeh")
@@ -629,3 +647,5 @@ position = Vector2(0, -32)
 scale = Vector2(0.8, 0.8)
 
 [connection signal="hurt" from="Graphics/Hurtbox" to="." method="_on_hurtbox_hurt"]
+
+[editable path="StatusPanel"]

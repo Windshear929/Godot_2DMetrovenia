@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c1hxa1akkatho"]
+[gd_scene load_steps=11 format=4 uid="uid://c1hxa1akkatho"]
 
 [ext_resource type="Texture2D" uid="uid://bgtg3w6qeswdp" path="res://Artwork/Legacy-Fantasy - High Forest 2.0/Assets/Tree-Assets.png" id="1_b2hj7"]
 [ext_resource type="Script" uid="uid://ds60s3gvtfb85" path="res://Scene/forest.gd" id="1_o2q3j"]
@@ -10,11 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://c2k688beh8iu3" path="res://Artwork/Legacy-Fantasy - High Forest 2.0/Trees/Background.png" id="5_jlusy"]
 [ext_resource type="Script" uid="uid://bfqy5cmbego0l" path="res://Classes/entrypoint.gd" id="5_p1i8u"]
 [ext_resource type="PackedScene" uid="uid://c0n2jas10c6jv" path="res://Character/boar.tscn" id="7_bawo1"]
-[ext_resource type="PackedScene" uid="uid://bbsl7ghac8ty1" path="res://Objects/save_stone.tscn" id="11_2dvii"]
 
-[node name="Forest" type="Node2D" node_paths=PackedStringArray("geometry")]
+[node name="Forest" type="Node2D" node_paths=PackedStringArray("geometry_1")]
 script = ExtResource("1_o2q3j")
-geometry = NodePath("Tilemap/Geometry")
+geometry_1 = NodePath("Tilemap/Geometry")
 bgm = ExtResource("2_uehro")
 
 [node name="Tilemap" type="Node2D" parent="."]
@@ -33,8 +32,8 @@ tile_set = ExtResource("2_o2q3j")
 
 [node name="TreeHole1" parent="Tilemap" instance=ExtResource("3_ffbcr")]
 position = Vector2(48, -128)
-path = "uid://cuhippqreqpc"
-entry_point = "IntoCave"
+path = "uid://b17lavok6h4ue"
+entry_point = "RoomEntry1"
 
 [node name="TreeHole2" parent="Tilemap" instance=ExtResource("3_ffbcr")]
 position = Vector2(928, 144)
@@ -56,9 +55,6 @@ metadata/_custom_type_script = "uid://bfqy5cmbego0l"
 [node name="Miscellaneous" type="TileMapLayer" parent="Tilemap"]
 tile_map_data = PackedByteArray("AAAOAAsAAQAIAAMAAAARAAsAAQAGAAMAAAATAAsAAQAIAAIAAAAYAAsAAQAKAAIAAAAdAAsAAQAIAAIAAAADAAkAAQAHAAMAAAAFAAkAAQAIAAIAAAAHAAkAAQAJAAIAAAAJAAkAAQAIAAIAAAALAAkAAQAIAAMAAAAoAAgAAQAIAAIAAAAxAAgAAQAKAAIAAAAyAAgAAQAIAAMAAAAzAAgAAQAGAAMAAAA0AAgAAQAHAAMAAAA4AAgAAQAJAAMAAAAlAP3/AQAIAAIAAAAgAPr/AQAGAAMAAAAHAPf/AQAIAAIAAAAIAPf/AQAIAAIAAAAJAPf/AQAJAAMAAAATAPf/AQAKAAIAAAA=")
 tile_set = ExtResource("2_o2q3j")
-
-[node name="SaveStone" parent="Tilemap" instance=ExtResource("11_2dvii")]
-position = Vector2(600, -32)
 
 [node name="Player" parent="." instance=ExtResource("2_07h3t")]
 unique_name_in_owner = true
@@ -203,7 +199,7 @@ region_enabled = true
 region_rect = Rect2(210, 101, 124, 86)
 
 [node name="Foreground" type="ParallaxBackground" parent="Decorations"]
-layer = 1
+layer = 50
 
 [node name="Bushes" type="ParallaxLayer" parent="Decorations/Foreground"]
 motion_scale = Vector2(1.1, 1.1)
@@ -322,4 +318,8 @@ max_speed = 150.0
 
 [node name="Boar2" parent="." instance=ExtResource("7_bawo1")]
 position = Vector2(400, 192)
+max_speed = 150.0
+
+[node name="Boar3" parent="." instance=ExtResource("7_bawo1")]
+position = Vector2(822, 144)
 max_speed = 150.0

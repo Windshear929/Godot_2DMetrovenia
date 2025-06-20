@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvgwhbh1206c"]
+
+[ext_resource type="Script" uid="uid://dohrr00nrngb1" path="res://Objects/item_object.gd" id="1_cypo7"]
+[ext_resource type="Texture2D" uid="uid://cufe0730a0w7r" path="res://Artwork/Icon/BG 3c.png" id="2_cypo7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol3mu"]
+atlas = ExtResource("2_cypo7")
+region = Rect2(0, 608, 32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cypo7"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ol3mu"]
+size = Vector2(16, 16)
+
+[node name="ItemObject" type="RigidBody2D"]
+collision_layer = 0
+script = ExtResource("1_cypo7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ol3mu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+rotation = -1.5708
+shape = SubResource("CircleShape2D_cypo7")
+
+[node name="PlayerCheck" type="Area2D" parent="."]
+position = Vector2(0, -8)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCheck"]
+shape = SubResource("RectangleShape2D_ol3mu")
+debug_color = Color(0.66, 0.5104, 0.099, 0.152941)
+
+[node name="FloorCheck" type="RayCast2D" parent="."]
+position = Vector2(0, -2)
+target_position = Vector2(0, 3)
+
+[connection signal="area_entered" from="PlayerCheck" to="." method="_on_player_check_area_entered"]

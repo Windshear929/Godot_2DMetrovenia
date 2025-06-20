@@ -11,9 +11,8 @@ var player: Player = null
 @onready var player_stats: Stats = $PlayerStats
 @onready var color_rect: ColorRect = $ColorRect
 @onready var default_player_stats := player_stats.to_dict()
-@onready var w_inventory: MarginContainer = %W_Inventory
-@onready var line_edit: LineEdit = %LineEdit
-@onready var btn_submit: Button = %BTN_Submit
+@onready var c_inventory: C_Inventory = $C_Inventory
+
 
 func _ready() -> void:
 	color_rect.color.a = 0
@@ -130,41 +129,3 @@ func back_to_title() -> void:
 
 func save_file_exist() -> bool:
 	return FileAccess.file_exists(SAVE_PATH)
-
-## 将字符串转化为指令
-func process_command(command: String) -> void:
-	var parts: PackedStringArray = command.split(" ")
-	if parts.size() <= 0: return
-	var cmd: String = parts[0]
-	var args: PackedStringArray = parts.slice(1, parts.size())
-	if not has_method(cmd):
-		push_error("No matching method found: ", cmd)
-		return
-	callv(cmd, args)
-
-## 添加道具的指令
-func add_item(item_name: String, count: String) -> void:
-	var item_count = int(count)
-	var item: Item = creat_item(item_name, item_count)
-	if item == null:
-		push_error("Couldn't find the item with the corresponding %s" % item_name)
-		return
-	w_inventory.c_inventory.add_item(item)
-	print_debug("添加道具：", item_name, " 数量：", item_count, "\n指令执行完成")
-
-## 创建道具
-func creat_item(item_name: String, count: int) -> Item:
-	var item_path: String = "res://Objects/Items/" + item_name + ".tres"
-	if not ResourceLoader.exists(item_path):
-		push_warning("资源路径没找到可识别的资源：", item_path)
-		return null
-	var item: Item = load(item_path).duplicate()
-	item.quantity = count
-	return item
-
-func _on_line_edit_text_submitted(new_text: String) -> void:
-	process_command(new_text)
-
-
-func _on_btn_submit_pressed() -> void:
-	process_command(line_edit.text)

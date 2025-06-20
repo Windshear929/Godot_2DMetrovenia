@@ -1,16 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://c7de0gp8b05pu"]
+[gd_scene load_steps=14 format=3 uid="uid://c7de0gp8b05pu"]
 
 [ext_resource type="Script" uid="uid://dfxjeh1wt5qb" path="res://Globals/game.gd" id="1_hv63o"]
 [ext_resource type="Script" uid="uid://dp0oddbjdu1ob" path="res://Classes/stats.gd" id="2_7rqii"]
 [ext_resource type="Script" uid="uid://cipqe1pvd7v1t" path="res://Classes/attribute.gd" id="3_kpgkj"]
-[ext_resource type="PackedScene" uid="uid://bdiop1dsvjst6" path="res://UI/Widgets/ui_layer.tscn" id="4_a75qt"]
-[ext_resource type="PackedScene" uid="uid://dl7d5uf4d5pua" path="res://UI/Widgets/w_inventory.tscn" id="5_ox044"]
-[ext_resource type="FontFile" uid="uid://bksb5v4yvd2ks" path="res://Artwork/UI/Fort/Silver.ttf" id="6_f235b"]
-[ext_resource type="Texture2D" uid="uid://chbinle58lqdw" path="res://Artwork/UI/HUD/GUI.png" id="7_nnuyt"]
+[ext_resource type="Script" uid="uid://drdx2oq85lb8t" path="res://Classes/c_inventory.gd" id="4_j27jc"]
 
 [sub_resource type="Resource" id="Resource_kpgkj"]
 script = ExtResource("3_kpgkj")
-base_value = 5
+base_value = 500
 modifiers = []
 metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
@@ -62,10 +59,6 @@ base_value = 6
 modifiers = []
 metadata/_custom_type_script = "uid://cipqe1pvd7v1t"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vt647"]
-atlas = ExtResource("7_nnuyt")
-region = Rect2(113, 113, 30, 14)
-
 [node name="Game" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_hv63o")
@@ -83,6 +76,9 @@ energy_regenerate = SubResource("Resource_nnuyt")
 attack_energy_regenerate = SubResource("Resource_vt647")
 metadata/_custom_type_script = "uid://dp0oddbjdu1ob"
 
+[node name="C_Inventory" type="Node" parent="."]
+script = ExtResource("4_j27jc")
+
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,54 +87,3 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
-
-[node name="UILayer" parent="." instance=ExtResource("4_a75qt")]
-visible = true
-
-[node name="W_Inventory" parent="UILayer" instance=ExtResource("5_ox044")]
-unique_name_in_owner = true
-
-[node name="W_GM" type="MarginContainer" parent="UILayer"]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -31.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/W_GM"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-
-[node name="LineEdit" type="LineEdit" parent="UILayer/W_GM/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 15)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("6_f235b")
-theme_override_font_sizes/font_size = 9
-placeholder_text = "输入你的指令"
-
-[node name="BTN_Submit" type="Button" parent="UILayer/W_GM/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_f235b")
-theme_override_font_sizes/font_size = 9
-text = "提交"
-icon = SubResource("AtlasTexture_vt647")
-flat = true
-icon_alignment = 1
-
-[connection signal="text_submitted" from="UILayer/W_GM/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
-[connection signal="pressed" from="UILayer/W_GM/HBoxContainer/BTN_Submit" to="." method="_on_btn_submit_pressed"]
-
-[editable path="UILayer"]

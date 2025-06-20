@@ -182,6 +182,7 @@ animations = [{
 }]
 
 [node name="Enemy" type="CharacterBody2D"]
+z_index = 10
 collision_layer = 4
 script = ExtResource("1_1ptw2")
 max_speed = 150.0
@@ -216,13 +217,12 @@ root_node = NodePath("../CollisionShape2D")
 script = ExtResource("1_4nc8h")
 metadata/_custom_type_script = "uid://xduhpqelwxau"
 
-[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("ignite_fx", "freeze_fx", "shock_fx", "element_fx_timer", "animation_player")]
+[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("ignite_fx", "freeze_fx", "shock_fx", "element_fx_timer")]
 script = ExtResource("5_4cfbj")
 ignite_fx = NodePath("../IgniteEffects")
 freeze_fx = NodePath("../FreezeEffects")
 shock_fx = NodePath("../ShockEffects")
 element_fx_timer = NodePath("../ElementTimer")
-animation_player = NodePath("../AnimationPlayer")
 metadata/_custom_type_script = "uid://dp0oddbjdu1ob"
 
 [node name="IgniteEffects" type="AnimatedSprite2D" parent="."]

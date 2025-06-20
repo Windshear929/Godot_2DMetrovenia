@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqpvantegk1vh"]
+
+[ext_resource type="Script" uid="uid://4gwlsn0xhola" path="res://Objects/treasure_chest.gd" id="1_5ps64"]
+[ext_resource type="Texture2D" uid="uid://vtcc6scwyorf" path="res://Artwork/Legacy-Fantasy - High Forest 2.0/Assets/Tiles.png" id="2_30r3r"]
+[ext_resource type="Resource" uid="uid://h8ke22rk5ikh" path="res://Objects/Items/sword_1.tres" id="2_s2qnm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ps64"]
+atlas = ExtResource("2_30r3r")
+region = Rect2(288, 272, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30r3r"]
+atlas = ExtResource("2_30r3r")
+region = Rect2(320, 272, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2qnm"]
+size = Vector2(48, 24)
+
+[node name="TreasureChest" type="Area2D" groups=["treasure"]]
+script = ExtResource("1_5ps64")
+chest_item = ExtResource("2_s2qnm")
+metadata/_custom_type_script = "uid://eckdwg5dxblh"
+
+[node name="Closed" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = SubResource("AtlasTexture_5ps64")
+
+[node name="Opened" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -16)
+texture = SubResource("AtlasTexture_30r3r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_s2qnm")

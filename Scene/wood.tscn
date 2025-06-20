@@ -98,9 +98,10 @@ _data = {
 &"open": SubResource("Animation_b0h7g")
 }
 
-[node name="Wood" type="Node2D" node_paths=PackedStringArray("geometry")]
+[node name="Wood" type="Node2D" node_paths=PackedStringArray("geometry_1", "geometry_2")]
 script = ExtResource("1_87xfn")
-geometry = NodePath("Trunk/Geometry")
+geometry_1 = NodePath("Trunk/Geometry")
+geometry_2 = NodePath("Cave/Plantform")
 bgm = ExtResource("2_b0h7g")
 boss_battle = ExtResource("3_27r7b")
 

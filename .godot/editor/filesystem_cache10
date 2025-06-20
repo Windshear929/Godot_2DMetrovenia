@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1749809274
+::res://::1750382865
 default_bus_layout.tres::AudioBusLayout/AudioBusLayout::2702480002470561846::1748587863::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::8414375835553545140::1747618430::1747618442::1::::<><><>0<>0<>167bf3e0c7022ef7162c8cd989572d0e<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 ::res://Artwork/::1749630123
@@ -83,10 +83,10 @@ Golden-Tree.png::CompressedTexture2D/CompressedTexture2D::160435803667336801::17
 Green-Tree.png::CompressedTexture2D/CompressedTexture2D::8732881537999869763::1747621554::1747793973::1::::<><><>0<>0<>a77230a399ec5fb437e315fdec5dec81<>res://.godot/imported/Green-Tree.png-c0d71f5ebbd23d28bd94ee6b9581db15.ctex::
 Red-Tree.png::CompressedTexture2D/CompressedTexture2D::49302802432014314::1747621554::1747793973::1::::<><><>0<>0<>5ad751d14589df090d4d89416f38984b<>res://.godot/imported/Red-Tree.png-00359457a5d186a8a5b8e4da94572ef7.ctex::
 Yellow-Tree.png::CompressedTexture2D/CompressedTexture2D::286308194127655090::1747621554::1747793973::1::::<><><>0<>0<>784f7325b6b2c9037a5e5b109e86a372<>res://.godot/imported/Yellow-Tree.png-5a4125a63a49f75b48979e300cbd5adf.ctex::
-::res://Artwork/Materials/::1749808769
-flash.gdshader::Shader::1472849446344723549::1749808769::0::1::::<><><>0<>0<><>::
-vignette.gdshader::Shader::2623372319186615634::1749808769::0::1::::<><><>0<>0<><>::
-w_equipment_slot.gdshader::Shader::387098628408877870::1749808769::0::1::::<><><>0<>0<><>::
+::res://Artwork/Materials/::1750329085
+flash.gdshader::Shader::1472849446344723549::1750329085::0::1::::<><><>0<>0<><>::
+vignette.gdshader::Shader::2623372319186615634::1750329085::0::1::::<><><>0<>0<><>::
+w_equipment_slot.gdshader::Shader::387098628408877870::1750329085::0::1::::<><><>0<>0<><>::
 ::res://Artwork/UI/::1749711087
 ::res://Artwork/UI/Bar/::1748311590
 BossHealthBar-frame.png::CompressedTexture2D/CompressedTexture2D::6242833201036071459::1748311589::1748311187::1::::<><><>0<>0<>736de22c945ca05bb5a1e3cd15ea5308<>res://.godot/imported/BossHealthBar-frame.png-a46fe440b0d901f666b03e67110730ef.ctex::
@@ -102,28 +102,29 @@ gdb-keyboard-2.png::CompressedTexture2D/CompressedTexture2D::2891020557303315634
 gdb-playstation-2.png::CompressedTexture2D/CompressedTexture2D::8644601397547981499::1747813534::1747813534::1::::<><><>0<>0<>71c78d5dc843f7eb8c38c2e5c264b360<>res://.godot/imported/gdb-playstation-2.png-eab03f2c55e136238848148154bff7ff.ctex::
 gdb-switch-2.png::CompressedTexture2D/CompressedTexture2D::7241893272478819595::1747813534::1747813534::1::::<><><>0<>0<>ebf8499f1d453e862bb535281891276b<>res://.godot/imported/gdb-switch-2.png-9d5b2ecd89267bf80fab1b4c9a107607.ctex::
 gdb-xbox-2.png::CompressedTexture2D/CompressedTexture2D::158442804752755434::1747813534::1747813534::1::::<><><>0<>0<>45c74a4f96126541c669e18c87ccf02a<>res://.godot/imported/gdb-xbox-2.png-9a202cf890aac155d13e48bff6e77b50.ctex::
-::res://Character/::1749808677
-boar.gd::GDScript/GDScript::1878994939897943689::1749784639::0::1::::<>Enemy<><>0<>0<><>::
-boar.tscn::PackedScene/PackedScene::6556054829110951075::1749797221::0::1::::<><><>0<>0<><>::uid://0o74rhlcl0mw::::res://Character/enemy.tscn<>uid://dkbfrad1pqokd::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Mob/Boar/Idle/Idle-Sheet.png<>uid://11g1iuaq4jlh::::res://Character/boar.gd<>uid://dafj4fqvm1dcx::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Mob/Boar/Walk/Walk-Base-Sheet.png<>uid://bdocpk78vr5rd::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Mob/Boar/Run/Run-Sheet.png<>uid://cb3v8cvwgti8i::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Mob/Boar/Hit-Vanish/Hit-Sheet.png<>uid://cadgys3c088lc::::res://UI/status_panel.tscn<>uid://cipqe1pvd7v1t::::res://Classes/attribute.gd<>uid://4h8ctq64276f::::res://SFX/boarhurt.wav
-enemy.gd::GDScript/GDScript::4245722433223534498::1749784646::0::1::::Enemy<>CharacterBody2D<><>0<>0<><>::
-enemy.tscn::PackedScene/PackedScene::1785618015512922666::1749621241::0::1::::<><><>0<>0<><>::uid://b1qwos7xqq5va::::res://Character/enemy.gd<>uid://xduhpqelwxau::::res://Classes/statemachine.gd<>uid://bdhe2eo14p346::::res://Classes/hitbox.gd<>uid://dwhr0wveplp3w::::res://Classes/hurtbox.gd<>uid://dp0oddbjdu1ob::::res://Classes/stats.gd<>uid://c74k1yeb8w547::::res://Artwork/FX/Burst of ice.png<>uid://c3e02de3rg0ry::::res://Artwork/FX/burning_end_1.png<>uid://d11c3yae6q52p::::res://Artwork/FX/burning_start_1.png<>uid://b6132av2bgah1::::res://Artwork/FX/Eletric A-Sheet.png
-player.gd::GDScript/GDScript::2599503306511404465::1749795552::0::1::::Player<>CharacterBody2D<><>0<>0<><>::
-player.tscn::PackedScene::2911993591127308527::1749808677::0::1::::<><><>0<>0<><>::uid://bdbho7ivtx426::::res://Character/player.gd<>uid://b3evckxp7w463::::res://Artwork/Character Assets/red/char_red_2.png<>uid://dq4wek0w2qeqc::::res://Artwork/Character Assets/red/char_red_1.png<>uid://xduhpqelwxau::::res://Classes/statemachine.gd<>uid://dwhr0wveplp3w::::res://Classes/hurtbox.gd<>uid://bdhe2eo14p346::::res://Classes/hitbox.gd<>uid://cadgys3c088lc::::res://UI/status_panel.tscn<>uid://rxmsq8ttntfx::::res://UI/game_over_screen.tscn<>uid://bhgoxlihu1cji::::res://Artwork/UI/Keys/gdb-keyboard-2.png<>uid://diyinbqxnqft3::::res://Objects/c_inventory.gd<>uid://d11c3yae6q52p::::res://Artwork/FX/burning_start_1.png<>uid://c3e02de3rg0ry::::res://Artwork/FX/burning_end_1.png<>uid://c74k1yeb8w547::::res://Artwork/FX/Burst of ice.png<>uid://b6132av2bgah1::::res://Artwork/FX/Eletric A-Sheet.png
+::res://Character/::1750325268
+boar.gd::GDScript::1878994939897943689::1750318899::0::1::::<>Enemy<><>0<>0<><>::
+boar.tscn::PackedScene::6556054829110951075::1750325268::0::1::::<><><>0<>0<><>::uid://0o74rhlcl0mw::::res://Character/enemy.tscn<>uid://dkbfrad1pqokd::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Mob/Boar/Idle/Idle-Sheet.png<>uid://11g1iuaq4jlh::::res://Character/boar.gd<>uid://dafj4fqvm1dcx::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Mob/Boar/Walk/Walk-Base-Sheet.png<>uid://c4qij38018214::::res://Objects/Items/skin.tres<>uid://bdocpk78vr5rd::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Mob/Boar/Run/Run-Sheet.png<>uid://bgyey16fi24d6::::res://Objects/Items/rock.tres<>uid://cb3v8cvwgti8i::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Mob/Boar/Hit-Vanish/Hit-Sheet.png<>uid://cadgys3c088lc::::res://UI/status_panel.tscn<>uid://cipqe1pvd7v1t::::res://Classes/attribute.gd<>uid://4h8ctq64276f::::res://SFX/boarhurt.wav
+enemy.gd::GDScript::4245722433223534498::1750322510::0::1::::Enemy<>CharacterBody2D<><>0<>0<><>::
+enemy.tscn::PackedScene::1785618015512922666::1750319440::0::1::::<><><>0<>0<><>::uid://b1qwos7xqq5va::::res://Character/enemy.gd<>uid://xduhpqelwxau::::res://Classes/statemachine.gd<>uid://bdhe2eo14p346::::res://Classes/hitbox.gd<>uid://dwhr0wveplp3w::::res://Classes/hurtbox.gd<>uid://dp0oddbjdu1ob::::res://Classes/stats.gd<>uid://c74k1yeb8w547::::res://Artwork/FX/Burst of ice.png<>uid://c3e02de3rg0ry::::res://Artwork/FX/burning_end_1.png<>uid://d11c3yae6q52p::::res://Artwork/FX/burning_start_1.png<>uid://b6132av2bgah1::::res://Artwork/FX/Eletric A-Sheet.png
+player.gd::GDScript::2599503306511404465::1750319760::0::1::::Player<>CharacterBody2D<><>0<>0<><>::
+player.tscn::PackedScene::2911993591127308527::1750325268::0::1::::<><><>0<>0<><>::uid://bdbho7ivtx426::::res://Character/player.gd<>uid://b3evckxp7w463::::res://Artwork/Character Assets/red/char_red_2.png<>uid://dq4wek0w2qeqc::::res://Artwork/Character Assets/red/char_red_1.png<>uid://xduhpqelwxau::::res://Classes/statemachine.gd<>uid://dwhr0wveplp3w::::res://Classes/hurtbox.gd<>uid://bdhe2eo14p346::::res://Classes/hitbox.gd<>uid://cadgys3c088lc::::res://UI/status_panel.tscn<>uid://rxmsq8ttntfx::::res://UI/game_over_screen.tscn<>uid://bhgoxlihu1cji::::res://Artwork/UI/Keys/gdb-keyboard-2.png<>uid://d11c3yae6q52p::::res://Artwork/FX/burning_start_1.png<>uid://c3e02de3rg0ry::::res://Artwork/FX/burning_end_1.png<>uid://c74k1yeb8w547::::res://Artwork/FX/Burst of ice.png<>uid://b6132av2bgah1::::res://Artwork/FX/Eletric A-Sheet.png
 wild_boar.gd::GDScript/GDScript::3232076532359785447::1749784628::0::1::::<>Enemy<><>0<>0<><>::
 wild_boar.tscn::PackedScene/PackedScene::7394076493600723688::1749797221::0::1::::<><><>0<>0<><>::uid://0o74rhlcl0mw::::res://Character/enemy.tscn<>uid://bmbv3fqsupyeh::::res://Character/wild_boar.gd<>uid://c2ffepmdejecu::::res://Artwork/Character Assets/Wild Boar/Idle-Sheet - Color 3.png<>uid://u8pu6fvvk2sn::::res://Artwork/Materials/flash.gdshader<>uid://djhpa68e8pts5::::res://Artwork/Character Assets/Wild Boar/Walk-Sheet - Color 3.png<>uid://d0k5m42yveqe::::res://Artwork/Character Assets/Wild Boar/Run-Sheet - Color 3.png<>uid://caxgyjsv5kben::::res://Artwork/Character Assets/Wild Boar/Attack - Color 3.png<>uid://dhxpwj12jtvon::::res://Artwork/Character Assets/Wild Boar/Die-Sheet - Color 3.png<>uid://bdhe2eo14p346::::res://Classes/hitbox.gd<>uid://dm5ghp4xcurbm::::res://Artwork/FX/Sparks-Sheet.png<>uid://ces1dpkwb85mw::::res://UI/boss_health_bar.tscn<>uid://cipqe1pvd7v1t::::res://Classes/attribute.gd<>uid://cur0ow7vokiko::::res://SFX/WildBoarIdle.ogg
-::res://Classes/::1749797216
+::res://Classes/::1750329035
 attribute.gd::GDScript/GDScript::5366297787599846635::1748945606::0::1::::Attribute<>Resource<><>0<>0<><>::
+c_inventory.gd::GDScript::8360110995040760273::1750329035::0::1::::C_Inventory<>Node<><>0<>0<><>::
 damage.gd::GDScript/GDScript::4092433301269707899::1749012790::0::1::::Damage<>RefCounted<><>0<>0<><>::
 entrypoint.gd::GDScript/GDScript::2771905851227148325::1749692729::0::1::::EntryPoint<>Marker2D<><>0<>0<><>::
 hitbox.gd::GDScript/GDScript::2611729176233474801::1748486687::0::1::::Hitbox<>Area2D<><>0<>0<><>::
-hurtbox.gd::GDScript/GDScript::8718945277275919634::1748486436::0::1::::Hurtbox<>Area2D<><>0<>0<><>::
+hurtbox.gd::GDScript/GDScript::8718945277275919634::1750052679::0::1::::Hurtbox<>Area2D<><>0<>0<><>::
 interactable.gd::GDScript/GDScript::285497823520135337::1748412651::0::1::::Interactable<>Area2D<><>0<>0<><>::
 statemachine.gd::GDScript/GDScript::1621764190114043216::1747736743::0::1::::StateMachine<>Node<><>0<>0<><>::
 stats.gd::GDScript/GDScript::8264559704310327797::1749796992::0::1::::Stats<>Node<><>0<>0<><>::
 teleport.gd::GDScript/GDScript::5977677312987393173::1749539145::0::1::::Teleport<>Interactable<><>0<>0<><>::
-::res://Globals/::1749808677
-game.gd::GDScript::222301204781702673::1749808649::0::1::::<>Node<><>0<>0<><>::
-game.tscn::PackedScene::7025365349697996226::1749808677::0::1::::<><><>0<>0<><>::uid://dfxjeh1wt5qb::::res://Globals/game.gd<>uid://dp0oddbjdu1ob::::res://Classes/stats.gd<>uid://cipqe1pvd7v1t::::res://Classes/attribute.gd<>uid://bdiop1dsvjst6::::res://UI/Widgets/ui_layer.tscn<>uid://dl7d5uf4d5pua::::res://UI/Widgets/w_inventory.tscn<>uid://bksb5v4yvd2ks::::res://Artwork/UI/Fort/Silver.ttf<>uid://chbinle58lqdw::::res://Artwork/UI/HUD/GUI.png
+::res://Globals/::1750325268
+game.gd::GDScript::222301204781702673::1750319768::0::1::::<>Node<><>0<>0<><>::
+game.tscn::PackedScene::7025365349697996226::1750325268::0::1::::<><><>0<>0<><>::uid://dfxjeh1wt5qb::::res://Globals/game.gd<>uid://dp0oddbjdu1ob::::res://Classes/stats.gd<>uid://cipqe1pvd7v1t::::res://Classes/attribute.gd<>uid://drdx2oq85lb8t::::res://Classes/c_inventory.gd
 sound_manager.gd::GDScript/GDScript::2715378000110174550::1749176668::0::1::::<>Node<><>0<>0<><>::
 sound_manager.tscn::PackedScene/PackedScene::8856576559171261427::1749013461::0::1::::<><><>0<>0<><>::uid://bqdmiam8oa676::::res://SFX/UISFX/Press.wav<>uid://bexl45b4lgvfy::::res://Globals/sound_manager.gd<>uid://qer2dgnhxbcx::::res://SFX/UISFX/Focus.wav<>uid://cjyfrl4yfqpd2::::res://SFX/PlayerSFX/413186__micahlg__male_hurt9.ogg<>uid://ddnh18y014u6r::::res://SFX/PlayerSFX/07_human_atk_sword_1.wav<>uid://0jkc22x1li8i::::res://SFX/PlayerSFX/07_human_atk_sword_2.wav<>uid://byq0nec65e8v6::::res://SFX/PlayerSFX/07_human_atk_sword_3.wav<>uid://c52jh62207a36::::res://SFX/Jump.ogg<>uid://c1ncw217q0k8q::::res://SFX/PlayerSFX/13_human_jump_land_1.wav<>uid://bqhiagei2im8f::::res://SFX/sword_slash.ogg<>uid://cxpmwyc1o4xip::::res://SFX/PlayerSFX/PlayerScream.ogg
 vignette.tscn::PackedScene/PackedScene::7789197558025671404::1748425853::0::1::::<><><>0<>0<><>::uid://bdm1s8807sx5k::::res://Artwork/Materials/vignette.gdshader
@@ -132,18 +133,20 @@ Clement Panchout _ Violence.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::6820
 fantasy Dragon.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::2085873189636070863::1748510294::1748584747::1::::<><><>0<>0<>3c2424df230233dafe93d3fade8c5110<>res://.godot/imported/fantasy Dragon.ogg-ec8714f7cb046abf42ef543238798ad5.oggvorbisstr::
 Gameover.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::252614177131296386::1748589121::1748589132::1::::<><><>0<>0<>b86ecc04c930cef3b8c6afaf8338f12e<>res://.godot/imported/Gameover.ogg-3edfae8e4562a9f5b5874944e8210043.oggvorbisstr::
 Time Flies _Clement Panchout _2016.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::1563014139611636600::1748508958::1748584747::1::::<><><>0<>0<>b13797ab4300156740ea567ccb164387<>res://.godot/imported/Time Flies _Clement Panchout _2016.ogg-86be19238acf3d11eb8d5f9e8396cfa0.oggvorbisstr::
-::res://Objects/::1749808297
-c_inventory.gd::GDScript::7770826895847135462::1749808297::0::1::::C_Inventory<>Node<><>0<>0<><>::
-Item.gd::GDScript::5892893747843101202::1749805181::0::1::::Item<>Resource<><>0<>0<><>::
+::res://Objects/::1750325268
+item_data.gd::GDScript::3923911629113957163::1750322833::0::1::::Item_data<>Resource<><>0<>0<><>::
+item_object.gd::GDScript::8157420405981348268::1750322313::0::1::::<>RigidBody2D<><>0<>0<><>::
+item_object.tscn::PackedScene::184133579095965852::1750325268::0::1::::<><><>0<>0<><>::uid://dohrr00nrngb1::::res://Objects/item_object.gd<>uid://cufe0730a0w7r::::res://Artwork/Icon/BG 3c.png
 mine_gate.tscn::PackedScene/PackedScene::3873797549910052250::1747880632::0::1::::<><><>0<>0<><>::uid://crfvqbvkll8h2::::res://Classes/teleport.gd<>uid://c5br0r7v3o14::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Assets/Buildings.png
 save_stone.gd::GDScript/GDScript::6639044572471482499::1748940324::0::1::::<>Interactable<><>0<>0<><>::
 save_stone.tscn::PackedScene/PackedScene::2494493685187321470::1748424174::0::1::::<><><>0<>0<><>::uid://c1uadg21b1y7d::::res://Objects/save_stone.gd<>uid://bmj38t2shc4oi::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Assets/Props-Rocks.png
 tree_hole.tscn::PackedScene/PackedScene::8858131755523546932::1747818439::0::1::::<><><>0<>0<><>::uid://crfvqbvkll8h2::::res://Classes/teleport.gd<>uid://bgtg3w6qeswdp::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Assets/Tree-Assets.png
-::res://Objects/Items/::1749805512
-wood_axe.tres::Resource/Item::3740684684015221241::1749805512::0::1::::<><><>0<>0<><>::uid://dkwwrca5juyou::::res://Artwork/Icon/#2 - Transparent Icons & Drop Shadow.png<>uid://cp7tdmrvmeh27::::res://Objects/Item.gd
-::res://Scene/::1749808606
-forest.gd::GDScript::8488208496951552508::1749808606::0::1::::World<>Node2D<><>0<>0<><>::
-forest.tscn::PackedScene::6613599803161934760::1749807618::0::1::::<><><>0<>0<><>::uid://bgtg3w6qeswdp::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Assets/Tree-Assets.png<>uid://ds60s3gvtfb85::::res://Scene/forest.gd<>uid://bhqudyaclafsh::::res://Character/player.tscn<>uid://bd6yttnl31lar::::res://TileSets/trunk.tres<>uid://4yoa531apyjf::::res://Music/fantasy Dragon.ogg<>uid://dyg7evao2k8hc::::res://Objects/tree_hole.tscn<>uid://3pfqrb5uu13y::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Background/Background.png<>uid://c2k688beh8iu3::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Trees/Background.png<>uid://bfqy5cmbego0l::::res://Classes/entrypoint.gd<>uid://c0n2jas10c6jv::::res://Character/boar.tscn<>uid://bbsl7ghac8ty1::::res://Objects/save_stone.tscn
+::res://Objects/Items/::1750322848
+rock.tres::Resource/Item_data::2857385952378516657::1750322848::0::1::::<><><>0<>0<><>::uid://bv51iso1gh67x::::res://Objects/item_data.gd<>uid://cufe0730a0w7r::::res://Artwork/Icon/BG 3c.png
+skin.tres::Resource/Item_data::6841851207845682693::1750322848::0::1::::<><><>0<>0<><>::uid://cufe0730a0w7r::::res://Artwork/Icon/BG 3c.png<>uid://bv51iso1gh67x::::res://Objects/item_data.gd
+::res://Scene/::1750329035
+forest.gd::GDScript/GDScript::8488208496951552508::1750216963::0::1::::World<>Node2D<><>0<>0<><>::
+forest.tscn::PackedScene::6613599803161934760::1750329035::0::1::::<><><>0<>0<><>::uid://bgtg3w6qeswdp::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Assets/Tree-Assets.png<>uid://ds60s3gvtfb85::::res://Scene/forest.gd<>uid://bhqudyaclafsh::::res://Character/player.tscn<>uid://bd6yttnl31lar::::res://TileSets/trunk.tres<>uid://4yoa531apyjf::::res://Music/fantasy Dragon.ogg<>uid://dyg7evao2k8hc::::res://Objects/tree_hole.tscn<>uid://3pfqrb5uu13y::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Background/Background.png<>uid://c2k688beh8iu3::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Trees/Background.png<>uid://bfqy5cmbego0l::::res://Classes/entrypoint.gd<>uid://c0n2jas10c6jv::::res://Character/boar.tscn<>uid://bbsl7ghac8ty1::::res://Objects/save_stone.tscn
 wood.gd::GDScript/GDScript::3556099538459317849::1749786039::0::1::::<>World<><>0<>0<><>::
 wood.tscn::PackedScene/PackedScene::182105359430043824::1749694216::0::1::::<><><>0<>0<><>::uid://bqwuo7px0runx::::res://Scene/wood.gd<>uid://4yoa531apyjf::::res://Music/fantasy Dragon.ogg<>uid://bd6yttnl31lar::::res://TileSets/trunk.tres<>uid://dyg7evao2k8hc::::res://Objects/tree_hole.tscn<>uid://c4f5otut048jj::::res://Music/Clement Panchout _ Violence.ogg<>uid://bfqy5cmbego0l::::res://Classes/entrypoint.gd<>uid://c2ra00sqpcoos::::res://TileSets/wood.tres<>uid://bmkxyyijgci8o::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Assets/Interior-01.png<>uid://bhqudyaclafsh::::res://Character/player.tscn<>uid://bvgq4554sci6m::::res://Objects/mine_gate.tscn<>uid://c0n2jas10c6jv::::res://Character/boar.tscn<>uid://3pfqrb5uu13y::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Background/Background.png<>uid://c2k688beh8iu3::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Trees/Background.png<>uid://ddl0mhwg8t8wq::::res://Character/wild_boar.tscn<>uid://bbsl7ghac8ty1::::res://Objects/save_stone.tscn
 ::res://SFX/::1748582955
@@ -167,10 +170,10 @@ run_on_wood_4.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::632211444819251570
 ::res://SFX/UISFX/::1748583036
 Focus.wav::AudioStreamWAV/AudioStreamWAV::1132359581977016359::1748583017::1748583031::1::::<><><>0<>0<>3c9755a72cac2b13ab4c8f7ba2eda44d<>res://.godot/imported/Focus.wav-cf45cdb80c1627cdfa4e7c0bd9974a82.sample::
 Press.wav::AudioStreamWAV/AudioStreamWAV::3516378225484002907::1748582958::1748583036::1::::<><><>0<>0<>e17c3807e2aac82858c4a1f7c4dbab99<>res://.godot/imported/Press.wav-6585a0cf2ed6c50d6932c60202f8cba5.sample::
-::res://TileSets/::1749807618
-trunk.tres::TileSet::2662475081457991277::1749807618::0::1::::<><><>0<>0<><>::uid://bgtg3w6qeswdp::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Assets/Tree-Assets.png
+::res://TileSets/::1750298522
+trunk.tres::TileSet::2662475081457991277::1750298522::0::1::::<><><>0<>0<><>::uid://bgtg3w6qeswdp::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Assets/Tree-Assets.png
 wood.tres::TileSet/TileSet::6703080553917055270::1749692729::0::1::::<><><>0<>0<><>::uid://vtcc6scwyorf::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Assets/Tiles.png
-::res://UI/::1749800658
+::res://UI/::1750325268
 boss_health_bar.gd::GDScript/GDScript::7640277818390505356::1749019605::0::1::::<>Control<><>0<>0<><>::
 boss_health_bar.tscn::PackedScene/PackedScene::5092340345005594494::1748490407::0::1::::<><><>0<>0<><>::uid://bksb5v4yvd2ks::::res://Artwork/UI/Fort/Silver.ttf<>uid://dg4ai244mpak7::::res://UI/boss_health_bar.gd<>uid://cu7csyv7ve7wh::::res://Artwork/UI/Bar/BossHealthBar-frame.png<>uid://m4pvfrywiiyo::::res://Artwork/UI/Bar/BossHealthBar.png<>uid://carxqi3nd84tx::::res://Artwork/UI/Bar/EasedBossHealthBar.png
 game_end_screen.gd::GDScript/GDScript::6962904195622104775::1748500299::0::1::::<>Control<><>0<>0<><>::
@@ -178,19 +181,8 @@ game_end_screen.tscn::PackedScene/PackedScene::4420350600185494880::1748500385::
 game_over_screen.gd::GDScript/GDScript::4228159865199928776::1748589246::0::1::::<>Control<><>0<>0<><>::
 game_over_screen.tscn::PackedScene/PackedScene::1241452670634755653::1749611367::0::1::::<><><>0<>0<><>::uid://bksb5v4yvd2ks::::res://Artwork/UI/Fort/Silver.ttf<>uid://b1iff7ts12qei::::res://UI/game_over_screen.gd<>uid://dumrvqwoxgic::::res://Music/Gameover.ogg
 main_theme.tres::Theme/Theme::7204127543537043543::1749711087::0::1::::<><><>0<>0<><>::uid://bksb5v4yvd2ks::::res://Artwork/UI/Fort/Silver.ttf<>uid://dkiu4yuhqdn6a::::res://Artwork/UI/HUD/Base-01.png
-status_panel.gd::GDScript/GDScript::5876453684640501920::1749019593::0::1::::<>HBoxContainer<><>0<>0<><>::
-status_panel.tscn::PackedScene/PackedScene::4779442650459138772::1749711087::0::1::::<><><>0<>0<><>::uid://cpyullw2vsr2g::::res://UI/status_panel.gd<>uid://dkiu4yuhqdn6a::::res://Artwork/UI/HUD/Base-01.png<>uid://dq4wek0w2qeqc::::res://Artwork/Character Assets/red/char_red_1.png
+status_panel.gd::GDScript/GDScript::5876453684640501920::1750217802::0::1::::<>HBoxContainer<><>0<>0<><>::
+status_panel.tscn::PackedScene::4779442650459138772::1750325268::0::1::::<><><>0<>0<><>::uid://cpyullw2vsr2g::::res://UI/status_panel.gd<>uid://dkiu4yuhqdn6a::::res://Artwork/UI/HUD/Base-01.png<>uid://dq4wek0w2qeqc::::res://Artwork/Character Assets/red/char_red_1.png
 title_screen.gd::GDScript/GDScript::5140684939105008489::1748584211::0::1::::<>Control<><>0<>0<><>::
 title_screen.tscn::PackedScene/PackedScene::332048326745093348::1748589251::0::1::::<><><>0<>0<><>::uid://davy6s5ji0jrj::::res://UI/main_theme.tres<>uid://bksb5v4yvd2ks::::res://Artwork/UI/Fort/Silver.ttf<>uid://cfiglhl0k2dlp::::res://UI/title_screen.gd<>uid://wjeu5ndo6xt5::::res://Music/Time Flies _Clement Panchout _2016.ogg<>uid://bd6yttnl31lar::::res://TileSets/trunk.tres<>uid://3pfqrb5uu13y::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Background/Background.png<>uid://dq4wek0w2qeqc::::res://Artwork/Character Assets/red/char_red_1.png<>uid://c2k688beh8iu3::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Trees/Background.png<>uid://bgtg3w6qeswdp::::res://Artwork/Legacy-Fantasy - High Forest 2.0/Assets/Tree-Assets.png
-::res://UI/Widgets/::1749808677
-ui_layer.tscn::PackedScene::2614380432534773253::1749808677::0::1::::<><><>0<>0<><>::uid://cufe0730a0w7r::::res://Artwork/Icon/BG 3c.png
-w_equipment_slot.gd::GDScript::6832071686600638464::1749723399::0::1::::W_EquipmentSlot<>W_ItemSlot<><>0<>0<><>::
-w_equipment_slot.tscn::PackedScene::6071811640911848191::1749808677::0::1::::<><><>0<>0<><>::uid://cl3hm14ur6531::::res://UI/Widgets/w_item_slot.tscn<>uid://frrptjq5d0ic::::res://Artwork/Materials/w_equipment_slot.gdshader<>uid://c4lrhthe7rqwm::::res://UI/Widgets/w_equipment_slot.gd<>uid://bxfq04myy8hgp::::res://Artwork/Icon/Glove.png
-w_inventory.gd::GDScript::2211586146661717377::1749808563::0::1::::<>MarginContainer<><>0<>0<><>::
-w_inventory.tscn::PackedScene::7997636203536876900::1749808677::0::1::::<><><>0<>0<><>::uid://6rkra3iqgv1j::::res://UI/Widgets/w_inventory.gd<>uid://dkiu4yuhqdn6a::::res://Artwork/UI/HUD/Base-01.png<>uid://bksb5v4yvd2ks::::res://Artwork/UI/Fort/Silver.ttf<>uid://nujkphxgcw33::::res://Artwork/Icon/BG 7.png<>uid://chbinle58lqdw::::res://Artwork/UI/HUD/GUI.png<>uid://cl3hm14ur6531::::res://UI/Widgets/w_item_slot.tscn<>uid://csrh36k5gjj8r::::res://UI/Widgets/w_equipment_slot.tscn
-w_item_slot.gd::GDScript::5848458866089435504::1749723362::0::1::::W_ItemSlot<>MarginContainer<><>0<>0<><>::
-w_item_slot.tscn::PackedScene::5603169084333568146::1749808677::0::1::::<><><>0<>0<><>::uid://cplbi7dcqfppo::::res://UI/Widgets/w_item_slot.gd<>uid://chbinle58lqdw::::res://Artwork/UI/HUD/GUI.png<>uid://fpv2cs286b0c::::res://UI/Widgets/w_item_tile.tscn
-w_item_tile.gd::GDScript::9073011470772689042::1749723189::0::1::::<>Control<><>0<>0<><>::
-w_item_tile.tscn::PackedScene::383233291909842240::1749808677::0::1::::<><><>0<>0<><>::uid://d2jbf5m7tfefa::::res://UI/Widgets/w_item_tile.gd<>uid://dkwwrca5juyou::::res://Artwork/Icon/#2 - Transparent Icons & Drop Shadow.png<>uid://bksb5v4yvd2ks::::res://Artwork/UI/Fort/Silver.ttf
-w_item_tip.gd::GDScript::2884817892473896227::1749800607::0::1::::<>MarginContainer<><>0<>0<><>::
-w_item_tip.tscn::PackedScene::1628734735882694891::1749808677::0::1::::<><><>0<>0<><>::uid://bhdor81e48lt0::::res://UI/Widgets/w_item_tip.gd<>uid://dkiu4yuhqdn6a::::res://Artwork/UI/HUD/Base-01.png<>uid://bksb5v4yvd2ks::::res://Artwork/UI/Fort/Silver.ttf
+::res://UI/Widgets/::1750217114

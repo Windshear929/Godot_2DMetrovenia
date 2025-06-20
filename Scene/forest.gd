@@ -1,7 +1,8 @@
 class_name World
 extends Node2D
 
-@export var geometry: TileMapLayer
+@export var geometry_1: TileMapLayer
+@export var geometry_2: TileMapLayer
 @export var bgm : AudioStream
 @export var boss_battle : AudioStream
 
@@ -15,10 +16,10 @@ signal holding_camera
 
 func _ready() -> void:
 	_player_get_effects()
-	Game.w_inventory.c_inventory = player.get_node("C_Inventory")
-	Game.w_inventory.initialize()
-	var used := geometry.get_used_rect().grow(-1) # 获取关卡矩形尺寸中非空的图块左上和右下的坐标
-	var tile_size := geometry.tile_set.tile_size # 获取瓦片地图的图块单位尺寸
+	
+	var combined_used := get_combine_used_rect()
+	var used := combined_used.grow(-1) # 获取关卡矩形尺寸中非空的图块左上和右下的坐标
+	var tile_size := geometry_1.tile_set.tile_size # 获取瓦片地图的图块单位尺寸
 	
 	# 这里的position是关卡矩形左上角的点；end是关卡矩形右小角的点。这里理解get_used_rect()只是获取了坐标，但是没有图块的尺寸
 	camera_2d.limit_top = used.position.y * tile_size.y
@@ -29,8 +30,15 @@ func _ready() -> void:
 	
 	if bgm:
 		SoundManager.play_bgm(bgm)
-	
-	
+
+
+func get_combine_used_rect() -> Rect2i:
+	var rect1 := geometry_1.get_used_rect()
+	if geometry_2 != null:
+		var rect2 := geometry_2.get_used_rect()
+		return rect1.merge(rect2)
+	return rect1
+
 
 func _player_get_effects() -> void:
 	Game.player_stats.ignite_fx = player.find_child("IgniteEffects", true, false)
@@ -84,13 +92,28 @@ func to_dict() -> Dictionary:
 	#for i in boss_alive.size():
 		#print("Enemy %d: %s" % [i, boss_alive[i]])
 	
+	var treasure_data = {}
+	for node in get_tree().get_nodes_in_group("treasure"):
+		if node.has_method("get_state"):
+			treasure_data[get_path_to(node)] = node.get_state()
+	
 	return {
 		boss_alive = boss_alive,
+		treasure_data = treasure_data
 	}
 
 
 func from_dict(dict: Dictionary) -> void:
-	for node in get_tree().get_nodes_in_group("boss"):
-		var path := get_path_to(node) as String
-		if path not in dict.boss_alive:
-			node.queue_free()
+	if dict.has("boss_alive"):
+		var current_bosses = get_tree().get_nodes_in_group("boss")
+		var alive_paths = dict["boss_alive"] as Array
+		for boss in current_bosses:
+			var path := get_path_to(boss) as String
+			if not alive_paths.has(path):
+				boss.queue_free()
+	
+	if dict.has("treasure_data"):
+		for path in dict["treasure_data"]:
+			var node = get_node_or_null(path)
+			if node and node.has_method("set_state"):
+				node.set_state(dict["treasure_data"][path])

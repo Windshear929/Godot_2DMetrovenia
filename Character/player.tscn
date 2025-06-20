@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://bhqudyaclafsh"]
+[gd_scene load_steps=63 format=3 uid="uid://bhqudyaclafsh"]
 
 [ext_resource type="Script" uid="uid://bdbho7ivtx426" path="res://Character/player.gd" id="1_3c51y"]
 [ext_resource type="Texture2D" uid="uid://b3evckxp7w463" path="res://Artwork/Character Assets/red/char_red_2.png" id="2_2brrg"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://cadgys3c088lc" path="res://UI/status_panel.tscn" id="8_76vsb"]
 [ext_resource type="PackedScene" uid="uid://rxmsq8ttntfx" path="res://UI/game_over_screen.tscn" id="8_crn8y"]
 [ext_resource type="Texture2D" uid="uid://bhgoxlihu1cji" path="res://Artwork/UI/Keys/gdb-keyboard-2.png" id="9_crn8y"]
-[ext_resource type="Script" uid="uid://diyinbqxnqft3" path="res://Objects/c_inventory.gd" id="10_8qfpo"]
 [ext_resource type="Texture2D" uid="uid://d11c3yae6q52p" path="res://Artwork/FX/burning_start_1.png" id="10_m6p0u"]
 [ext_resource type="Texture2D" uid="uid://c3e02de3rg0ry" path="res://Artwork/FX/burning_end_1.png" id="11_xj0yq"]
 [ext_resource type="Texture2D" uid="uid://c74k1yeb8w547" path="res://Artwork/FX/Burst of ice.png" id="12_6y5aw"]
@@ -2155,6 +2154,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 20
 collision_layer = 2
 script = ExtResource("1_3c51y")
 
@@ -2231,7 +2231,7 @@ script = ExtResource("3_2brrg")
 metadata/_custom_type_script = "uid://xduhpqelwxau"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 15
+layer = 128
 
 [node name="StatusPanel" parent="CanvasLayer" instance=ExtResource("8_76vsb")]
 offset_left = 7.0
@@ -2275,9 +2275,5 @@ frame_progress = 1.0
 [node name="RunSFX" type="AudioStreamPlayer" parent="."]
 volume_db = -2.0
 bus = &"SFX"
-
-[node name="C_Inventory" type="Node" parent="."]
-script = ExtResource("10_8qfpo")
-metadata/_custom_type_script = "uid://diyinbqxnqft3"
 
 [connection signal="hurt" from="Graphics/Hurtbox" to="." method="_on_hurtbox_hurt"]

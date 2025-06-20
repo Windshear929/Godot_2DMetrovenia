@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cadgys3c088lc"]
+[gd_scene load_steps=10 format=3 uid="uid://cadgys3c088lc"]
 
 [ext_resource type="Script" uid="uid://cpyullw2vsr2g" path="res://UI/status_panel.gd" id="1_moavk"]
 [ext_resource type="Texture2D" uid="uid://dkiu4yuhqdn6a" path="res://Artwork/UI/HUD/Base-01.png" id="2_1u1vb"]
@@ -15,10 +15,6 @@ region_rect = Rect2(323, 203, 26, 26)
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2dw0"]
 atlas = ExtResource("3_0wo71")
 region = Rect2(22, 24, 11, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1l86m"]
-atlas = ExtResource("2_1u1vb")
-region = Rect2(307, 21, 58, 6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ywfxo"]
 atlas = ExtResource("2_1u1vb")
@@ -51,20 +47,29 @@ stretch_mode = 5
 
 [node name="V" type="VBoxContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 3
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 5
 alignment = 1
 
-[node name="HealthBar" type="TextureProgressBar" parent="V"]
+[node name="HealthBarFrame" type="MarginContainer" parent="V"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+size_flags_vertical = 6
+mouse_filter = 2
+
+[node name="HealthBar" type="TextureProgressBar" parent="V/HealthBarFrame"]
+custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 size_flags_vertical = 4
 max_value = 1.0
 step = 0.0
 value = 0.8
-texture_over = SubResource("AtlasTexture_1l86m")
 texture_progress = SubResource("AtlasTexture_ywfxo")
 texture_progress_offset = Vector2(1, 1)
 
-[node name="EasedHealthBar" type="TextureProgressBar" parent="V/HealthBar"]
+[node name="EasedHealthBar" type="TextureProgressBar" parent="V/HealthBarFrame/HealthBar"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -78,6 +83,15 @@ step = 0.0
 value = 1.0
 texture_progress = SubResource("AtlasTexture_moavk")
 texture_progress_offset = Vector2(1, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="V/HealthBarFrame"]
+layout_mode = 2
+texture = ExtResource("2_1u1vb")
+region_rect = Rect2(307, 21, 58, 6)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="EnegyBar" type="TextureProgressBar" parent="V"]
 layout_mode = 2

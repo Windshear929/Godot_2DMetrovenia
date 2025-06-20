@@ -10,8 +10,6 @@ enum State {
 
 const KNOCKBACK_POWER := 300.0
 
-
-
 @onready var wall_checker: RayCast2D = $Graphics/WallChecker
 @onready var player_checker: RayCast2D = $Graphics/PlayerChecker
 @onready var floor_checker: RayCast2D = $Graphics/FloorChecker
@@ -136,6 +134,9 @@ func hide_health_bar() -> void:
 	tween.tween_property(status_panel, "modulate:a", 0.0, 0.2)
 
 func die():
+	if can_drop_item():
+		drop_item()
+	
 	var tween = create_tween()
 	tween.tween_property(graphics, "modulate:a", 0.0, 0.2)
 	await tween.finished

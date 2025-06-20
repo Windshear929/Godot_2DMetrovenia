@@ -9,35 +9,18 @@ extends World
 
 
 func _ready() -> void:
-	_player_get_effects() # 因为wood的_ready函数重写，所以需要再调用一下
-	var combined_used := get_combine_used_rect()
-	var used := combined_used.grow(-1) # 获取关卡矩形尺寸中非空的图块左上和右下的坐标
-	var tile_size := geometry.tile_set.tile_size # 获取瓦片地图的图块单位尺寸
-	
-	# 这里的position是关卡矩形左上角的点；end是关卡矩形右小角的点。这里理解get_used_rect()只是获取了坐标，但是没有图块的尺寸
-	camera_2d.limit_top = used.position.y * tile_size.y
-	camera_2d.limit_left = used.position.x * tile_size.x
-	camera_2d.limit_right = used.end.x * tile_size.x
-	camera_2d.limit_bottom = used.end.y * tile_size.y
-	camera_2d.reset_smoothing()
+	super()
 	
 	door_player.play("idle_close")
 	
 	wild_boar.boss_dead.connect(after_boss_dead)
 	holding_camera.connect(wild_boar.boss_health_bar.show_boss_health) # 这样调取函数都可以
-	#print("信号连接状态: ", $WildBoar.boss_dead.is_connected(after_boss_dead))
 
 func _process(delta: float) -> void:
 	var boss_exist :=  get_tree().get_nodes_in_group("boss")
 	if not boss_exist:
 		door_player.play("idle_open")
 		detect_area.monitoring = false
-
-func get_combine_used_rect() -> Rect2i:
-	var rect1 := geometry.get_used_rect()
-	var rect2 := plantform.get_used_rect()
-	
-	return rect1.merge(rect2)
 
 
 func _on_detect_area_body_entered(body: Node2D) -> void:

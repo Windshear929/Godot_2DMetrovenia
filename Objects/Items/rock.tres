@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Item_data" load_steps=4 format=3 uid="uid://bgyey16fi24d6"]
+
+[ext_resource type="Script" uid="uid://bv51iso1gh67x" path="res://Objects/item_data.gd" id="1_6dx4f"]
+[ext_resource type="Texture2D" uid="uid://cufe0730a0w7r" path="res://Artwork/Icon/BG 3c.png" id="1_wvvau"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl4hi"]
+atlas = ExtResource("1_wvvau")
+region = Rect2(32, 544, 32, 32)
+
+[resource]
+script = ExtResource("1_6dx4f")
+item_id = "002"
+item_name = "石头"
+description = "既坚硬又顽固"
+item_type = 0
+item_icon = SubResource("AtlasTexture_xl4hi")
+max_stack = 99
+quantity = 1
+metadata/_custom_type_script = "uid://bv51iso1gh67x"
